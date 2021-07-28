@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/public/source/source.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link type="text/css" rel="stylesheet" href="/public/styles/internsliststyles.css" />
+</head>
+
+<body>
+    <div class="main" id="blur">
+        <header>
+            <nav>
+                <ul>
+                    <br><br>
+                    <li>
+                        <div class="logo">
+                            <img src="/public/images/listerlogo.png" width="300" height="70" />
+                        </div>
+                    </li>
+                    &emsp; &emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                    &emsp; &emsp;&emsp; &emsp;&emsp; &emsp;&emsp;&emsp; &emsp;
+                    &emsp; &emsp;&emsp; &emsp;&emsp; &emsp;&emsp;&emsp; &emsp;
+                    &emsp; &emsp;&emsp; &emsp;&emsp; &emsp;&emsp;&emsp; &emsp;
+                    &emsp; &emsp;&emsp; &emsp;&emsp; &emsp;&emsp;&emsp; &emsp;
+                    <br><br>
+                    <li>
+                        &emsp; &emsp;&emsp; &emsp;&emsp; &emsp;&emsp;&emsp; &emsp;
+                        &emsp; &emsp;&emsp; &emsp;&emsp; &emsp;&emsp;&emsp; &emsp;
+                        &emsp; &emsp; &emsp;&emsp; &emsp;&emsp; &emsp;&emsp;&emsp; &emsp;
+                        <a href="/Homepage">Home</a>
+                    </li>
+
+                    <li>
+                        <a onclick=history.back()>Go back to my profile</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <br><br><br><br>
+        <div class="heading">
+            <div class="title">
+                <h2>List of Current Interns</h2>
+            </div>
+            <br><br><br>
+        </div>
+        <br><br><br><br><br><br>
+        <div class="interns">
+            <div class="card" onclick="openForm(0)">
+                <img src="/public/images/men.png" alt="Avatar" style="width:100%">
+                <div class="cardcontainer">
+                    <h4 id="name"><b>Ajay Shankar</b></h4>
+                    <p>Full stack intern</p>
+                </div>
+            </div>
+            <div class="card" onclick="openForm(1)">
+                <img src="/public/images/men.png" alt="Avatar" style="width:100%">
+                <div class="cardcontainer">
+                    <h4><b>Srinivasalu</b></h4>
+                    <p>Full stack intern</p>
+                </div>
+            </div>
+            <div class="card" onclick="openForm(2)">
+                <img src="/public/images/women.png" alt="Avatar" style="width:100%">
+                <div class="cardcontainer">
+                    <h4><b>Sneha</b></h4>
+                    <p>Devops intern</p>
+                </div>
+            </div>
+            <div class="card" onclick="openForm(3)">
+                <img src="/public/images/men.png" alt="Avatar" style="width:100%">
+                <div class="cardcontainer">
+                    <h4><b>Rahul</b></h4>
+                    <p>Data analyst intern</p>
+                </div>
+            </div>
+            <div class="card" onclick="openForm(4)">
+                <img src="/public/images/women.png" alt="Avatar" style="width:100%">
+                <div class="cardcontainer">
+                    <h4><b>Pooja</b></h4>
+                    <p>Marketing intern</p>
+                </div>
+            </div>
+            <div class="card" onclick="openForm(5)">
+                <img src="/public/images/women.png" alt="Avatar" style="width:100%">
+                <div class="cardcontainer">
+                    <h4><b>Reshma</b></h4>
+                    <p>Full stack intern</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="block" id="myForm" style="font-family: Verdana, Geneva, Tahoma, sans-serif;">
+        <div class="userimage">
+            <image src="/public/images/user.jpg" width="300" height="300"></image>
+            <p class="mail" id="mailid">&nbsp;</p>
+        </div>
+        <div class="details" style="font-family: Verdana, Geneva, Tahoma, sans-serif;">
+            <strong>
+                <h1>
+                    <p id="uname"></p>
+                </h1>
+            </strong></p>
+            <p id="id"></p>
+            <p id="about"></p>
+            <p><b>skills : </b></p>
+            <p id="skills"></p>
+            <br>
+            <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+        </div>
+    </div>
+</body>
+
+</html>

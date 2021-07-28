@@ -1,0 +1,79 @@
+
+body   
+{  
+height: 125vh;  
+margin-top: 80px;   
+background: url('/public/images/back.jpg') center top fixed;
+background-size: cover;  
+font-family: sans-serif;  
+}  
+header {  
+background-color:black;  
+position: fixed;  
+left: 0;  
+right: 0;  
+top: 5px;  
+height: 100px;  
+display: flex;  
+align-items: center;  
+box-shadow: 0 0 25px 0 black;  
+}  
+header * {  
+display: inline;  
+}  
+header li {  
+margin: 40px;  
+}  
+header li a {  
+color: white;  
+text-decoration: none;  
+}
+.logo 
+{
+  float:left;
+}
+.logo1
+{
+  float: left;
+}
+
+body, html {
+  height: 100%;
+  width : 100%;
+}
+
+button {   
+    background-color: #4CAF50;   
+    width: 100%;  
+     color: black;   
+     padding: 15px;   
+     margin: 10px 0px;   
+     border: none;   
+     cursor: pointer;   
+      }   
+form {   
+     border: 3px solid #f1f1f1;   
+ }   
+input[type=text], input[type=password] {   
+     width: 100%;   
+     margin: 8px 0;  
+     padding: 12px 20px;   
+     display: inline-block;   
+     border: 2px solid black; 
+     box-sizing: border-box;     
+ }  
+button:hover {   
+     opacity: 0.7;   
+ }   
+
+.container { 
+    margin: auto;
+     width : 60%;
+     padding: 15px;   
+     background-color:white;  
+ }  
+
+ .signupform
+ {
+    width : 50%;
+ }

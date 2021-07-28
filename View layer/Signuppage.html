@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script src="/public/source/source.js"></script>
+  <link rel="stylesheet" href="/public/styles/signupstyles.css">
+</head>
+
+<body background="/public/images/db.png">
+  <header>
+    <nav>
+      <ul>
+        <br><br>
+        <li>
+          <div class="logo">
+            <img src="/public/images/listerlogo.png" width="300" height="70" />
+          </div>
+        </li>
+        &emsp; &emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+        &emsp; &emsp;&emsp; &emsp;&emsp; &emsp;&emsp;&emsp; &emsp;
+        &emsp; &emsp;&emsp; &emsp;&emsp; &emsp;&emsp;&emsp; &emsp;
+        &emsp; &emsp;&emsp; &emsp;&emsp; &emsp;&emsp;&emsp; &emsp;
+        &emsp; &emsp;&emsp; &emsp;&emsp; &emsp;&emsp;&emsp; &emsp;
+        <br><br>
+        <li>
+          &emsp; &emsp;&emsp; &emsp;&emsp; &emsp;&emsp;&emsp; &emsp;
+          &emsp; &emsp;&emsp; &emsp;&emsp; &emsp;&emsp;&emsp; &emsp;
+          &emsp; &emsp; &emsp;&emsp; &emsp;&emsp; &emsp;
+          <a href="/Homepage"> Home </a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <br><br><br><br><br><br><br>
+  <div class="container">
+    <form class="singupform" method="post" action="/">
+      <strong><label>Username : </label></strong>
+      <input type="text" placeholder="Enter Username" id="Name" name="Name">
+      <strong><label>Password : </label></strong>
+      <input type="password" placeholder="Enter Password" id="Password" name="Password">
+      <strong><label>Employee Id :</label></strong>
+      <input type="text" placeholder="Enter employee id" id="Eid" name="Eid">
+      <strong><label>Mail ID :</label></strong>
+      <input type="text" placeholder="Enter Mail Id" id="Mail" name="Mail">
+      <strong><label>Domain :</label></strong>
+      <input type="text" placeholder="Enter your domain " id="Domain" name="Domain">
+      <strong><label>Description :</label></strong>
+      <input type="text" placeholder="Enter a short description about you " id="Description" name="Description">
+      </br>
+      </br>
+      <input type="checkbox" id="confirmation" required />
+      <label for="confirmation">I hereby confirm that i wanted to create an internship profile</label>
+      <button type="submit">Sign up</button>
+    </form>
+  </div>

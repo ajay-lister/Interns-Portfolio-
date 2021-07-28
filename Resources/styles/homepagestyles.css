@@ -1,0 +1,171 @@
+
+html
+{
+    min-height: 100%;
+     overflow-y:scroll;
+     overflow-x:hidden;
+    scroll-behavior: smooth;
+}
+body::-webkit-scrollbar {
+  display: none;
+}
+body
+ {
+     position: absolute; 
+ }
+html,body   
+{   
+margin-top: 80px;  
+padding: 30px; 
+height: auto ;
+font-family: sans-serif;  
+position: relative;
+}  
+ 
+.bodycontent
+{
+    background: url("/public/images/intern.jpg") center fixed no-repeat;
+    background-size: cover; 
+}
+section 
+{
+    padding: 20px;
+    box-sizing: border-box;
+}
+header {  
+background-color:black;  
+position: fixed;  
+left: 0;  
+right: 0;  
+top: 5px;  
+height: 100px;  
+display: flex;  
+align-items: center;  
+box-shadow: 0 0 25px 0 black;  
+}  
+header * {  
+display: inline;  
+}  
+header li {  
+margin: 40px;  
+}  
+header li a {  
+color: white;  
+text-decoration: none;  
+}
+.login{
+   text-align: center;
+   left : 500px;
+   color: white;
+   float: right;
+}
+.logo 
+{
+  float:left;
+}
+.logo1
+{
+  float: left;
+}
+.footer 
+{
+  margin-left: -6%;
+  margin-right: -5%;
+  background-color:black;   
+  bottom: 5px;  
+  height: 300px;
+  display: flex;  
+  align-items: center;  
+  color: white; 
+  padding-left: 100px;
+}
+
+.form-popup {
+  float: left;
+  width: 95%;
+  position: fixed top;
+  bottom: 0;
+  right: 15px;
+  border: 50px solid #f1f1f1;
+  z-index: 9;
+}
+
+
+.form-container {
+  float : right;
+  width: 80%;
+  max-width: 300px;
+  padding: 70px;
+  background-color: white;
+  border: 20px solid black;
+  height : 415px;
+}
+
+
+.form-container input[type=text], .form-container input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+
+.form-container input[type=text]:focus, .form-container input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+
+.form-container .btn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+
+.form-container .cancel {
+  background-color: red;
+}
+
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+
+.left
+{
+  width: 100px;
+  float: left;
+  height: 600px;
+
+}
+
+.right 
+{
+  width: 700px;
+  float: right;
+  height: 400px;
+}
+
+.contact 
+{
+  float : left;
+  width  : 50%;
+}
+
+.ids
+{
+   float : right;
+   width : 50%;
+   right: 0;
+}
+
+a:hover
+{
+  color: rgb(247, 142, 82);
+}

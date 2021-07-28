@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="/public/source/source.js"></script>
+  <link type="text/css" rel="stylesheet" href="/public/styles/homepagestyles.css" />
+</head>
+
+<body background="/public/images/db.png">
+  <div class="bodycontent">
+    <header>
+      <nav>
+        <ul>
+          <br><br>
+          <li>
+            <div class="logo">
+              <img src="/public/images/listerlogo.png" width="300" height="70" />
+              &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+              &emsp;&emsp;&emsp;&emsp;&emsp; &emsp; &emsp;&emsp;&emsp;&emsp;
+            </div>
+          </li>
+          &emsp; &emsp; &emsp;&emsp;&emsp;&emsp;&emsp; &emsp; &emsp;&emsp;&emsp;&emsp;
+          &emsp; &emsp; &emsp;&emsp;&emsp;&emsp;&emsp; &emsp; &emsp;&emsp;&emsp;&emsp;
+          &emsp;&emsp;&emsp;&emsp;&emsp; &emsp; &emsp;&emsp;&emsp;&emsp;
+          &emsp; &emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+          &emsp; &emsp;&emsp; &emsp;&emsp; &emsp;&emsp;&emsp; &emsp;&emsp;&emsp; &emsp;&emsp;&emsp; &emsp;
+          &emsp;&emsp; &emsp;&emsp;&emsp; &emsp;&emsp;&emsp; &emsp;&emsp;&emsp;
+          <br>
+          <li>
+            <a href="/Homepage"> Home </a>
+          </li>
+          <li>
+            <a href="Homepage#contact"> Contact </a>
+          </li>
+          <li> <a href="Homepage#about"> About us </a>
+          </li>
+          <li>
+            <a href="/signup"> Join Us </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+  </div>
+  <div class="form-popup" id="myForm">
+    <div class="left">
+      <image src="/public/images/lister.png"></image><br><br><br>
+      <image src="/public/images/lister1.png" width="650"></image>
+    </div>
+    <div class="right">
+      <form name="loginform" action="/validate" class="form-container" method="POST">
+        <h1>Login</h1>
+
+        <label for="Name"><b>Username</b></label>
+        <input type="text" placeholder="Enter Username" id="Name" name="Name" required>
+        <label for="Password"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" id="Password" name="Password" required>
+
+        <button type="submit" class="btn">Login</button>
+      </form>
+    </div>
+  </div>
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  <br><br>
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  <section id="about">
+    <div class="aboutus-container">
+      <br><br><br><br><br><br>
+      <h1>About Us</h1>
+      <hr size="2px" color="black">
+      <p>
+        Lister Technologies was established in 2000, headquartered in Chennai. In 2004, we began working as an extended
+        professional services team of a leading e-mail marketing company and started our journey with digital marketing
+        services. Three years later, we began working with a sizeable ed-tech customer and focused on retail and
+        e-commerce, simultaneously building our Salesforce Practice by becoming one of the first partners for Salesforce
+        in India. <br><br><br>
+
+        By 2009, we started working on the Adobe and Google marketing platforms. That same year, we garnered another
+        feather in our cap when we won a Salesforce Customer Satisfaction Award.
+
+        In 2010, ten years after we began operations, we opened our second office in Chennai for housing our software
+        development unit. One year later, we added a large cement manufacturing group in our elite list of enterprise
+        clients and a Fortune 500 nutraceutical company, and by 2012, entered into an agreement with Responsys to become
+        their professional services arm for their global clients and to assist them in product engineering. <br><br><br>
+
+        In the six years, between 2014 and 2020, we grew exponentially, opening a US subsidiary (2016) and partnering
+        with numerous companies there, like BigCommerce, Oracle, WooCommerce, Tealium, Braze, Iterable and Mparticle. We
+        also signed on other notable enterprises and Fortune 500 clients, in hi-tech, BFSI, retail, travel and
+        entertainment verticals. <br><br><br>
+
+        Today, we are a 300-member company and have established ourselves as one of the top Oracle Marketing Cloud
+        partners, globally, as well as one of the most experienced Salesforce partners in South Asia. We support
+        numerous Fortune 500 companies, delivering immense value to our customers through thought leadership, technical
+        expertise and execution excellence. We hope to continue on this same path, evolving further and growing from
+        strength to strength—whether it be our revenues, workforce, clients or partners.<br><br><br>
+      </p>
+    </div>
+  </section>
+  <br><br>
+  <footer class="footer" id="contact">
+    <div class="contact">
+      <h1>Contact</h1><br>
+      <p>1.800.701.3082</p>
+    </div>
+    <div class="ids">
+      <p><strong>
+          <h1>Follow us on</h1>
+        </strong></p><br>
+      <image src="/public/images/fb.png" height=70 width=70 onclick="facebook()"></image>
+      <image src="/public/images/twt.png" height=60 width=60 onclick="twitter()"></image>
+    </div>
+  </footer>
+  <br><br>
+  <centre>
+    <p style="color:cadetblue"> Lister Technologies, 2021.
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; All rights reserved.
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Website Privacy
+      Policy Services
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      Privacy Policy &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      Information Security
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Terms &
+      Conditions &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</body>
+
+</html>
