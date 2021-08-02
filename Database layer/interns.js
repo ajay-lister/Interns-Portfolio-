@@ -2,18 +2,11 @@ const express = require('express')
 const router = express.Router()
 const { loginschema } = require('./interntable')
 const { internschema } = require('./interntable')
+const con = require('./dbconnection')
 const bodyParser = require('body-parser')
-const mongoose = require('mongoose')
 const alert = require('alert')
 
 const app = express()
-
-
-const url = "mongodb://localhost:27017/interndetails"
-
-mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
-
-const con = mongoose.connection
 
 con.on('open', () => {
     console.log("Connected....")

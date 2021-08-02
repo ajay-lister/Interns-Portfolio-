@@ -86,15 +86,32 @@ const { details } = require('../../Database layer/interns')
 //   return false;
 // }
 
-function openForm(n) {
-  switch (n) {
-    case 0: setinterndetails(0); break;
-    case 1: setinterndetails(1); break;
-    case 2: setinterndetails(2); break;
-    case 3: setinterndetails(3); break;
-    case 4: setinterndetails(4); break;
-    case 5: setinterndetails(5); break;
-  }
+// function openForm(n) {
+//   switch (n) {
+//     case 0: setinterndetails(0); break;
+//     case 1: setinterndetails(1); break;
+//     case 2: setinterndetails(2); break;
+//     case 3: setinterndetails(3); break;
+//     case 4: setinterndetails(4); break;
+//     case 5: setinterndetails(5); break;
+//   }
+//   document.getElementById("myForm").style.display = "block";
+//   var blur = document.getElementById('blur');
+//   blur.classList.toggle('active');
+// }
+
+function openForm(intern) {
+  var na = intern.Name;
+  var id = intern._id;
+  var desc = intern.Description;
+  var mail = intern.Mail;
+  // var skills = intern[`${index}`]['skills'];
+  document.getElementById("uname").innerHTML = na;
+  document.getElementById("id").innerHTML = "<b>ID : </b>" + id;
+  document.getElementById("about").innerHTML = desc;
+  document.getElementById("mailid").innerHTML = "<strong>&nbsp;Mail Id : </strong>" + mail;
+  document.getElementById("skills").innerHTML = "Java,JavaScript,HTML";
+
   document.getElementById("myForm").style.display = "block";
   var blur = document.getElementById('blur');
   blur.classList.toggle('active');
