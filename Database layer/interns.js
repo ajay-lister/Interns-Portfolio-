@@ -5,7 +5,7 @@ const { internschema } = require("./interntable");
 const con = require("./dbconnection");
 const bodyParser = require("body-parser");
 const alert = require("alert");
-const bcrypt = require("bcrypt");
+//const bcrypt = require("bcrypt");
 const Cryptr = require("cryptr");
 
 cryptr = new Cryptr("abc");
@@ -33,7 +33,6 @@ router.post("/validate", async (req, res) => {
       else {
         internschema.findOne({ Name: un }, function (err, intern) {
           if (err) console.log(err);
-          console.log(intern);
           // detail = intern;
           res.render("../View layer/demoprofile", {
             details: intern,
@@ -56,8 +55,6 @@ router.get("/fetchall", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  // let pwd = await bcrypt.hash(req.body.Password, 10);
-
   const pwd = cryptr.encrypt(req.body.Password);
 
   const login = new loginschema({
