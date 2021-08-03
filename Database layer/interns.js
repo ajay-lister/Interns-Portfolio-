@@ -79,7 +79,7 @@ router.post("/fetchresult" ,async (req,res)=>
       var skill = req.body.selement;
       internschema.find({Skills : skill},function(err,skilled)
          {
-              console.log(skilled)
+              // console.log(skilled)
 
                res.render("../View layer/Internslist.ejs", {
                 interns: skilled,
