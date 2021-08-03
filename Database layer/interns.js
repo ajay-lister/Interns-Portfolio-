@@ -35,7 +35,7 @@ router.post("/validate", async (req, res) => {
           if (err) console.log(err);
           console.log(intern);
           // detail = intern;
-          res.render('../../View layer/demoprofile', {
+          res.render('../View layer/demoprofile', {
             details: intern,
           });
         });
@@ -49,7 +49,7 @@ router.post("/validate", async (req, res) => {
 router.get("/fetchall", async (req, res) => {
   internschema.find({}, function (err, intern) {
     if (err) console.log(err);
-    res.render('../../View layer/Internslist.ejs', {
+    res.render('../View layer/Internslist.ejs', {
       interns: intern,
     });
   });
