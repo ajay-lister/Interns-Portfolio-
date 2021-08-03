@@ -14,6 +14,9 @@ const schema1 = new mongoose.Schema(
             type: String,
             required: true
         },
+        Skills: {
+            type: [String]
+          },
         Description:
         {
             type: String
@@ -42,6 +45,10 @@ const schema2 = new mongoose.Schema(
             type: String,
             required: true
         },
+        Role: {
+            type: String,
+            required: true
+        }
     }
 )
 
