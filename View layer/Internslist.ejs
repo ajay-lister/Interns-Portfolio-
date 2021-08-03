@@ -7,6 +7,8 @@
     <script src="/public/source/source.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link type="text/css" rel="stylesheet" href="/public/styles/internsliststyles.css" />
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
 </head>
 
 <body>
@@ -30,7 +32,7 @@
                         &emsp; &emsp;&emsp; &emsp;&emsp; &emsp;&emsp;&emsp; &emsp;
                         &emsp; &emsp;&emsp; &emsp;&emsp; &emsp;&emsp;&emsp; &emsp;
                         &emsp; &emsp; &emsp;&emsp; &emsp;&emsp; &emsp;&emsp;&emsp; &emsp;
-                        <a href="/Homepage">Home</a>
+                        <a href="/fetchall">List</a>
                     </li>
 
                     <li>
@@ -39,17 +41,24 @@
                 </ul>
             </nav>
         </header>
-        <br><br><br><br>
         <div class="heading">
             <div class="title">
                 <h2>List of Current Interns</h2>
+                     <!-- Search&nbsp;&nbsp;<input type="search" style="width: 300px;height: 50px;"> -->
+
+                     <div id="searchbox">
+                         <form action="/fetchresult" method="post">
+                        <image src="/public/images/srch.png" id="ic"></image>
+                        <input type="search" placeholder="Search based on skills" class="ipt" id="selement" name="selement" value="">
+                        </form>
+                     </div>
             </div>
             <br><br><br>
         </div>
-        <br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br>
         <div class="interns">
             <% for(var i=0;i<interns.length;i++){ %>
-                <div class="card" onclick="openForm(<%= interns[i] %>)">
+                <div class="card" style="position: sticky;">
                     <img src="/public/images/men.png" alt="Avatar" style="width:100%">
                     <div class="cardcontainer">
                         <h4 id="name">
@@ -58,6 +67,11 @@
                         <p>
                             <%= interns[i].Domain %>
                         </p>
+                        <div class="notifybtn">
+                               <button onclick="msgform(<%= interns[i] %>);" style="background-color:orange;color: white;margin-left: -10%;padding: 7px;">NOMINATE</button>
+                               <button onclick="openForm(<%= interns[i] %>)" style="background-color:blue;color: white;float: right;padding: 7px;" >PROFILE</button>
+                        </div>
+
                     </div>
                 </div>
                 <% if(i+1 %7==0) { %>
@@ -83,9 +97,48 @@
             <p><b>skills : </b></p>
             <p id="skills"></p>
             <br>
-            <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+            <button type="button" class="btn cancel" onclick="closeForm()" style="color: white;font-size: 15px;">Close</button>
         </div>
     </div>
+
+    <div class="mailblock" id="mailform" style="font-family: Verdana, Geneva, Tahoma, sans-serif;display: none;">
+        <br><br>
+          <div class="course">
+               Course Title :&nbsp;<input type="text" placeholder="Enter the course title/URL" style="width: 250px;height: 30px;" id="course">
+          </div>
+          <div class="duration">
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                Duration :&nbsp;<input type="number" placeholder="Enter the maximum duration" style="width: 250px;height: 30px;" id="duration">
+          </div>
+          <br><br>
+         <div class="tomail">
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+               <p id="tomail"></p><!--<input type="text" placeholder="Enter the intern email-Id" style="width: 250px;height: 30px;" id="tomail">-->
+          </div>
+          <br><br><br><br><br>
+          <button type="button" width="30px" class="btn post" onclick="postemail(document.getElementById('course').value,document.getElementById('duration').value,document.getElementById('tomail').value)"><h3>Post E-Mail</h3></button>
+          <button type="button" width="30px" class="close" onclick="closeMsgForm()"><h3>Close</h3></button>
+    </div>
+
+    <script>
+         var searchbox = document.getElementById("searchbox");
+         var ic = document.getElementById("ic");
+
+         ic.onclick = function()
+         {
+             searchbox.classList.toggle("act");
+         }    
+    </script>
+    <!-- <script>
+           document.getElementById("selement").addEventListener("keydown",function(e)
+           { 
+                if(!e) {var e = window.event;}
+                if(e.keyCode== 13)
+                {
+                      window.location.href = "/fetchresult";
+                }
+           })
+    </script> -->
 </body>
 
 </html>

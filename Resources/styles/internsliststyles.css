@@ -1,10 +1,11 @@
-html {
-  min-height: 100%;
-  overflow-y: scroll;
-  overflow-x: scroll;
-  scroll-behavior: smooth;
-}
 
+
+html {
+    min-height: 100%;
+     overflow-y:scroll;
+     overflow-x:hidden;
+    scroll-behavior: smooth;
+}
 body {
   height: 100%;
   margin-top: 80px;
@@ -13,18 +14,19 @@ body {
   font-family: sans-serif;
 }
 
+
 body::-webkit-scrollbar {
   display: none;
 }
 
-html,
-body {
-  margin-top: 80px;
-  padding: 30px;
-  height: auto;
-  font-family: sans-serif;
-  position: relative;
-}
+html,body   
+{   
+margin-top: 80px;  
+padding: 30px; 
+height: auto ;
+font-family: sans-serif; 
+position: relative;
+}  
 
 header {
   background-color: black;
@@ -132,7 +134,6 @@ html {
   margin-left: 40px;
   float: left;
   padding: 10px;
-  position: static;
   background-color: white;
 }
 
@@ -145,7 +146,9 @@ html {
 }
 
 .interns {
+  left: 10px;
   position: fixed;
+  margin-top: -5%;
 }
 
 .heading {
@@ -156,6 +159,8 @@ html {
   padding: 20px;
   background-color: blanchedalmond;
   width: 100%;
+  margin-left: -4.5%;
+  margin-top: -5%;
 }
 .title {
   border: 2px solid black;
@@ -163,21 +168,31 @@ html {
   position: center;
 }
 
-/* .form-popup {
-  display: none;
-  position: fixed;
-   top : 20%;
-   left : 50%;
-  right: 15px;
-  border: 3px solid #f1f1f1;
-  z-index: 9;
-
-} */
-
 .cancel {
   background-color: red;
   width: 100%;
   padding: 20px;
+}
+
+.close {
+  margin-right: 40px;
+  color: white;
+  font-size: 12px;
+  background-color: red;
+  width: 30%;
+  padding: 4px;
+  font-weight: bold;
+  float: right;
+}
+.post {
+  margin-left: 40px;
+  color: white;
+  font-size: 12px;
+  background-color: green;
+  width: 30%;
+  padding: 4px;
+  font-weight: bold;
+  float: left;
 }
 
 .main#blur.active {
@@ -186,4 +201,70 @@ html {
 
 a:hover {
   color: rgb(247, 142, 82);
+}
+
+.notifybtn {
+  margin-left: 20px;
+}
+
+.searchbox {
+  width: 10px;
+  right: 10px;
+}
+
+.course {
+  float: left;
+}
+
+.duration {
+  margin-right: 10px;
+}
+
+.mailblock {
+  display: none;
+  display: flex;
+  margin: 20px;
+  width: 50%;
+  height: 40%;
+  top: 20%;
+  border: 3px solid black;
+  padding: 10px;
+  background-color: white;
+  position: fixed;
+  left: 300px;
+}
+
+.tomail {
+  margin-left: -6%;
+  float: left;
+}
+
+#searchbox {
+  margin-right: 15px;
+  margin-top: -60px;
+  float: right;
+  border-radius: 55px;
+  padding: 10px;
+  background: white;
+  display: flex;
+  align-items: center;
+  box-shadow: 1px 1px 6px -1px rgba(0, 0, 0, 0.15),
+    -1px -1px 6px -1px rgba(255, 255, 2550.7);
+}
+
+#ic {
+  height: 30px;
+}
+
+.ipt {
+  font-size: 20px;
+  width: 0;
+  border: 0;
+  background: transparent;
+  outline: none;
+  transition: 2s;
+}
+
+.act .ipt {
+  width: 360px;
 }
