@@ -20,7 +20,9 @@ const schema1 = new mongoose.Schema({
     type: String,
     required: true,
   },
+  Skills: [String],
 });
+
 const internschema = mongoose.model("internschema", schema1);
 
 const schema2 = new mongoose.Schema({
@@ -39,21 +41,20 @@ const schema2 = new mongoose.Schema({
 });
 
 const loginschema = mongoose.model("loginschema", schema2);
-// module.exports = mongoose.model('Inter', schema)
-// module.exports = mongoose.model('Login', loginschema)
-const schema3 = new mongoose.Schema({
-  _id : {
-    type:String,
-    required:true,
-  },
-  Skills: [String],
-  Rating: [Number]
-});
 
- const skillschema = mongoose.model("skillschema", schema3);
+// const schema3 = new mongoose.Schema({
+//   _id : {
+//     type:String,
+//     required:true,
+//   },
+//   Skills : [String],
+//   Rating: [Number]
+// });
+
+//  const skillschema = mongoose.model("skillschema", schema3);
 
 module.exports = {
   loginschema: loginschema,
   internschema: internschema,
-  skillschema: skillschema,
 };
+

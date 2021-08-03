@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const { loginschema } = require("./interntable");
 const { internschema } = require("./interntable");
-const { skillschema } = require("./interntable");
+// const { skillschema } = require("./interntable");
 const con = require("./dbconnection");
 const bodyParser = require("body-parser");
 const alert = require("alert");
@@ -54,23 +54,39 @@ router.get("/fetchall", async (req, res) => {
   });
 });
 
-router.get("/fetchresult", async (req, res) => {
-          var skill = req.body.selement;
-          console.log(skill)
-         skillschema.find({Skills : { "$in" :skill}},function(err,skilldetail)
+// router.get("/fetchresult", async (req, res) => {
+//           var skill = req.body.selement;
+//           console.log(skill)
+//          skillschema.find({Skills : { "$in" :skill}},function(err,skilldetail)
+//          {
+//               const id = JSON.stringify(skilldetail).substring(49,53);
+//               console.log(id)
+//              internschema.find({ },function(err,detail)
+//             { 
+//                 if (err) console.log(err);
+//                 //console.log(detail)
+//                 res.render("../View layer/Internslist.ejs", {
+//                 interns: detail,
+//                 });
+//          })
+//         });
+//       });
+
+router.post("/fetchresult" ,async (req,res)=>
+{
+      // console.log(req.body.selement)
+      //res.send("Hello")
+      var skill = req.body.selement;
+      internschema.find({Skills : skill},function(err,skilled)
          {
-              const id = JSON.stringify(skilldetail).substring(49,53);
-              console.log(id)
-             internschema.find({ },function(err,detail)
-            { 
-                if (err) console.log(err);
-                //console.log(detail)
-                res.render("../View layer/Internslist.ejs", {
-                interns: detail,
+              console.log(skilled)
+
+               res.render("../View layer/Internslist.ejs", {
+                interns: skilled,
                 });
-         })
-        });
-      });
+              })
+
+})
 
 router.post("/", async (req, res) => {
   const pwd = cryptr.encrypt(req.body.Password);
@@ -86,19 +102,20 @@ router.post("/", async (req, res) => {
     Domain: req.body.Domain,
     Description: req.body.Description,
     Mail: req.body.Mail,
+    Skills : ['Java','HTML']
   });
 
-  const skill = new skillschema({
-    _id: req.body.Eid,
-    Skills : ["Java","Html"],
-    Rating : [7,8],
-  });
+  // const skill = new skillschema({
+  //   _id: req.body.Eid,
+  //   Skills : ["Java","Html"],
+  //   Rating : [7,8],
+  // });
 
 
   try {
     const i1 = await intern.save();
     const i2 = await login.save();
-    const i3 = await skill.save();
+    // const i3 = await skill.save();
     res.redirect("/Homepage");
   } catch (err) {
     res.send("Error");
