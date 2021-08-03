@@ -2,10 +2,11 @@ const express = require("express");
 const router = express.Router();
 const { loginschema } = require("./interntable");
 const { internschema } = require("./interntable");
+// const { skillschema } = require("./interntable");
 const con = require("./dbconnection");
 const bodyParser = require("body-parser");
 const alert = require("alert");
-const bcrypt = require("bcrypt");
+//const bcrypt = require("bcrypt");
 const Cryptr = require("cryptr");
 
 cryptr = new Cryptr("abc");
@@ -14,6 +15,7 @@ const app = express();
 con.on("open", () => {
   console.log("Connected....");
 });
+
 
 router.use(bodyParser.urlencoded({ extended: true }));
 
@@ -33,14 +35,11 @@ router.post("/validate", async (req, res) => {
       else {
         internschema.findOne({ Name: un }, function (err, intern) {
           if (err) console.log(err);
-          console.log(intern);
           // detail = intern;
           res.render('../View layer/demoprofile', {
             details: intern,
           });
         });
-        // res.redirect('/load')
-        // res.redirect('/profile',)
       }
     });
   }
@@ -55,13 +54,45 @@ router.get("/fetchall", async (req, res) => {
   });
 });
 
-router.post("/", async (req, res) => {
-  // let pwd = await bcrypt.hash(req.body.Password, 10);
+// router.get("/fetchresult", async (req, res) => {
+//           var skill = req.body.selement;
+//           console.log(skill)
+//          skillschema.find({Skills : { "$in" :skill}},function(err,skilldetail)
+//          {
+//               const id = JSON.stringify(skilldetail).substring(49,53);
+//               console.log(id)
+//              internschema.find({ },function(err,detail)
+//             { 
+//                 if (err) console.log(err);
+//                 //console.log(detail)
+//                 res.render("../View layer/Internslist.ejs", {
+//                 interns: detail,
+//                 });
+//          })
+//         });
+//       });
 
-  const pwd = cryptr.encrypt(req.body.Password);
+router.post("/fetchresult" ,async (req,res)=>
+{
+      // console.log(req.body.selement)
+      //res.send("Hello")
+      var skill = req.body.selement;
+      internschema.find({Skills : skill},function(err,skilled)
+         {
+              // console.log(skilled)
+
+               res.render("../View layer/Internslist.ejs", {
+                interns: skilled,
+                });
+              })
+
+})
+
 
   const arr = req.body.Skills.split(",")
   console.log(arr)
+router.post("/", async (req, res) => {
+  const pwd = cryptr.encrypt(req.body.Password);
   const login = new loginschema({
     _id: req.body.Eid,
     Name: req.body.Name,
@@ -78,9 +109,17 @@ router.post("/", async (req, res) => {
     Mail: req.body.Mail
   });
 
+  // const skill = new skillschema({
+  //   _id: req.body.Eid,
+  //   Skills : ["Java","Html"],
+  //   Rating : [7,8],
+  // });
+
+
   try {
     const i1 = await intern.save();
     const i2 = await login.save();
+    // const i3 = await skill.save();
     res.redirect("/Homepage");
   } catch (err) {
     res.send("Error");
