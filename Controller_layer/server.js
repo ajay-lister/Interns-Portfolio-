@@ -8,6 +8,7 @@ app.use(express.json());
 app.use("/", router);
 app.use("/validate", router);
 app.use("/fetchall", router);
+app.use("/fetchresult", router);
 
 app.use("/public", express.static(path.join(__dirname + "/../Resources")));
 

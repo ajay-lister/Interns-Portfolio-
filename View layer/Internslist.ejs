@@ -31,7 +31,7 @@
                         &emsp; &emsp;&emsp; &emsp;&emsp; &emsp;&emsp;&emsp; &emsp;
                         &emsp; &emsp;&emsp; &emsp;&emsp; &emsp;&emsp;&emsp; &emsp;
                         &emsp; &emsp; &emsp;&emsp; &emsp;&emsp; &emsp;&emsp;&emsp; &emsp;
-                        <a href="/Homepage">Home</a>
+                        <a href="/fetchall">List</a>
                     </li>
 
                     <li>
@@ -46,8 +46,11 @@
                      <!-- Search&nbsp;&nbsp;<input type="search" style="width: 300px;height: 50px;"> -->
                      <div id="searchbox">
                          <image src="/public/images/srch.png" id="ic"></image>
-                        <input type="text" placeholder="Search based on skills" class="ipt" id="selement">
+                        <input type="text" placeholder="Search based on skills" class="ipt" id="selement" name="selement">
                      </div>
+                     <!-- <div class="search-result">
+                         
+                     </div> -->
             </div>
             <br><br><br>
         </div>
@@ -64,11 +67,10 @@
                             <%= interns[i].Domain %>
                         </p>
                         <div class="notifybtn">
-                               <button onclick="msgform();" style="background-color:orange;color: white;margin-left: -10%;padding: 7px;">Nominate</button>
-                               <button onclick="openForm(<%= interns[i] %>)" style="background-color:blue;color: white;float: right;padding: 7px;" >Description</button>
+                               <button onclick="msgform(<%= interns[i] %>);" style="background-color:orange;color: white;margin-left: -10%;padding: 7px;">NOMINATE</button>
+                               <button onclick="openForm(<%= interns[i] %>)" style="background-color:blue;color: white;float: right;padding: 7px;" >PROFILE</button>
                         </div>
 
-          
                     </div>
                 </div>
                 <% if(i+1 %7==0) { %>
@@ -110,7 +112,7 @@
           <br><br>
          <div class="tomail">
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                Receiver Mail-Id :&nbsp;<input type="text" placeholder="Enter the intern email-Id" style="width: 250px;height: 30px;" id="tomail">
+               <p id="tomail"></p><!--<input type="text" placeholder="Enter the intern email-Id" style="width: 250px;height: 30px;" id="tomail">-->
           </div>
           <br><br><br><br><br>
           <button type="button" width="30px" class="btn post" onclick="postemail(document.getElementById('course').value,document.getElementById('duration').value,document.getElementById('tomail').value)"><h3>Post E-Mail</h3></button>
@@ -125,6 +127,16 @@
          {
              searchbox.classList.toggle("act");
          }    
+    </script>
+    <script>
+           document.getElementById("selement").addEventListener("keydown",function(e)
+           {
+                if(!e) {var e = window.event;}
+                if(e.keyCode== 13)
+                {
+                      window.location.href = "/fetchresult"
+                }
+           })
     </script>
 </body>
 

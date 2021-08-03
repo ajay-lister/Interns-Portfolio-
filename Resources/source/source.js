@@ -1,3 +1,5 @@
+let mailid;
+
 function openForm(intern) {
   var na = intern.Name;
   var id = intern._id;
@@ -113,8 +115,12 @@ function twitter() {
   window.location.href = "https://twitter.com/listercx?lang=en";
 }
 
-function msgform() {
+function msgform(intern) {
   document.getElementById("mailform").style.display = "block";
+  document.getElementById("tomail").innerHTML =
+    "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Receiver Mail-Id :&nbsp;" +
+    intern.Mail;
+  mailid = intern.Mail;
   var blur = document.getElementById("blur");
   blur.classList.toggle("active");
 }
@@ -127,12 +133,12 @@ function closeMsgForm() {
   blur.classList.toggle("active");
 }
 
-function postemail(course, duration, tomail) {
+function postemail(course, duration) {
   Email.send({
     Host: "smtp.gmail.com",
     Username: "managersample7@gmail.com",
     Password: "A123B123",
-    To: tomail,
+    To: mailid,
     From: "managersample7@gmail.com",
     Subject: "Course completion-Reg",
     Body:
@@ -146,6 +152,7 @@ function postemail(course, duration, tomail) {
       "</bold>" +
       " months.<br> Thank you.",
   }).then(function (message) {
+    mailid = "";
     alert("mail sent successfully");
   });
 }
