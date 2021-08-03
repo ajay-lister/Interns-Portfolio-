@@ -5,13 +5,15 @@ function openForm(intern) {
   var id = intern._id;
   var desc = intern.Description;
   var mail = intern.Mail;
+  var skills = intern.Skills;
   // var skills = intern[`${index}`]['skills'];
   document.getElementById("uname").innerHTML = na;
   document.getElementById("id").innerHTML = "<b>ID : </b>" + id;
   document.getElementById("about").innerHTML = desc;
-  document.getElementById("mailid").innerHTML =
-    "<strong>&nbsp;Mail Id : </strong>" + mail;
-  document.getElementById("skills").innerHTML = "Java,JavaScript,HTML";
+
+  document.getElementById("mailid").innerHTML = "<strong>&nbsp;Mail Id : </strong>" + mail;
+  document.getElementById("skills").innerHTML = skills;
+
   document.getElementById("myForm").style.display = "block";
   var blur = document.getElementById("blur");
   blur.classList.toggle("active");

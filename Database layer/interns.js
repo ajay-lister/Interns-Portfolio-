@@ -36,7 +36,7 @@ router.post("/validate", async (req, res) => {
         internschema.findOne({ Name: un }, function (err, intern) {
           if (err) console.log(err);
           // detail = intern;
-          res.render("../View layer/demoprofile", {
+          res.render('../View layer/demoprofile', {
             details: intern,
           });
         });
@@ -48,7 +48,7 @@ router.post("/validate", async (req, res) => {
 router.get("/fetchall", async (req, res) => {
   internschema.find({}, function (err, intern) {
     if (err) console.log(err);
-    res.render("../View layer/Internslist.ejs", {
+    res.render('../View layer/Internslist.ejs', {
       interns: intern,
     });
   });
@@ -88,21 +88,25 @@ router.post("/fetchresult" ,async (req,res)=>
 
 })
 
+
+  const arr = req.body.Skills.split(",")
+  console.log(arr)
 router.post("/", async (req, res) => {
   const pwd = cryptr.encrypt(req.body.Password);
   const login = new loginschema({
     _id: req.body.Eid,
     Name: req.body.Name,
     Password: pwd,
-  });
+    Role: req.body.Role
 
+  });
   const intern = new internschema({
     _id: req.body.Eid,
     Name: req.body.Name,
     Domain: req.body.Domain,
+    Skills: arr,
     Description: req.body.Description,
-    Mail: req.body.Mail,
-    Skills : ['Java','HTML']
+    Mail: req.body.Mail
   });
 
   // const skill = new skillschema({
