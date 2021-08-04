@@ -158,3 +158,5 @@ function postemail(course, duration) {
     alert("mail sent successfully");
   });
 }
+
+module.exports = mailid;

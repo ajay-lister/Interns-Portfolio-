@@ -25,7 +25,16 @@ const schema1 = new mongoose.Schema(
         {
             type: String,
             required: true
-        }
+        },
+        Course:
+        {
+             type: String,
+        },
+       Coursestatus:
+       {
+            type: String,
+       }
+
     }
 )
 const internschema = mongoose.model("internschema", schema1);
@@ -56,8 +65,29 @@ const loginschema = mongoose.model("loginschema", schema2);
 // module.exports = mongoose.model('Inter', schema)
 // module.exports = mongoose.model('Login', loginschema)
 
+// const schema3 = new mongoose.Schema(
+//     {
+//         _id: {
+//             type: String,
+//             required: true
+//         },
+//         Course:
+//         {
+//            type: String,
+//            required: true   
+//         },
+//         Status:
+//         {
+//            type: String,
+//            required: true   
+//         },
+//     }
+// )
+
+// const courseschema = mongoose.model("courseschema", schema3);
+
 module.exports =
 {
     loginschema: loginschema,
-    internschema: internschema
+    internschema: internschema,
 }

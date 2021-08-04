@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/public/source/source.js"></script>
+    <link type=" text/css" rel="stylesheet" href="/public/styles/profilestyles.css" />
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <br><br>
+                <li>
+                    <div class="logo">
+                        <img src="/public/images/listerlogo.png" width="300" height="70" />
+                    </div>
+                </li>
+                &emsp; &emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                &emsp; &emsp;&emsp; &emsp;&emsp; &emsp;&emsp;&emsp; &emsp;
+                &emsp; &emsp;&emsp; &emsp;&emsp; &emsp;&emsp;&emsp; &emsp;
+                &emsp; &emsp;&emsp; &emsp;&emsp; &emsp;&emsp;&emsp; &emsp;
+                &emsp; &emsp;&emsp; &emsp;&emsp; &emsp;&emsp;&emsp; &emsp;
+                <br><br>
+                &emsp; &emsp;&emsp; &emsp;&emsp; &emsp;&emsp;&emsp; &emsp;
+                &emsp; &emsp;&emsp; &emsp;&emsp; &emsp;&emsp;&emsp; &emsp;
+                <li>
+                    <div class="dropdown">
+                        <button class="dropbtn">Interns</button>
+                        <div class="dropdown-content">
+                            <a href="/fetchall">List</a>
+                            <a href="#aboutintern">About Internship</a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    &emsp; &emsp;&emsp; &emsp;
+                    <a href="#contact"> Contact </a>
+                </li>
+                <li>
+                    &emsp; &emsp;&emsp; &emsp;
+                    <a href="/logout"> Log out </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <div class="totalcontainer">
+        <div class="details">
+            <h2><strong>MY PROFILE</strong></h2>
+            <br><br><br><br>
+        </div>
+        <br><br><br><br>
+        <div>
+            <div class="brief">
+                <image src="/public/images/user.jpg" width="300" height="300"></image>
+                <h1><strong>
+                        <p id="uname">
+                            <%= details["Name"] %>
+                        </p>
+                    </strong></h1>
+
+                <div class="domain">
+                    <h2><strong>
+                            <p id="domain">
+                                <%= details["Domain"] %>
+                            </p>
+                        </strong></h2>
+                    </centre>
+                </div>
+            </div>
+
+            <div class="det">
+                <div class="about">
+                    &nbsp;&nbsp;&nbsp;
+                    <h3>
+                        <p id="id">
+                            &nbsp;&nbsp;&nbsp;<strong>EMPLOYEE ID :</strong>&nbsp;&nbsp;&nbsp;&nbsp; <%= details["_id"]
+                                %>
+                        </p>
+                    </h3><br>
+                    <hr color="black">
+                    <h3>
+                        <p id="mail">
+                            &nbsp;&nbsp;&nbsp;<strong>EMPLOYEE MAIL ID :</strong>&nbsp;&nbsp;&nbsp;&nbsp;<%=
+                                details["Mail"] %>
+                        </p>
+                    </h3><br>
+                    <hr color="black">
+                    <h3>
+                        <p id="desc">
+                            &nbsp;&nbsp;&nbsp;<strong>DESCRIPTION :</strong>&nbsp;&nbsp;&nbsp;&nbsp;
+                            <%=details["Description"] %>
+                        </p>
+                    </h3>
+                </div>
+
+
+                <div class="skills">
+                    <div class="heading"><strong>
+                            <h3>SKILLS</h3>
+                        </strong></div>
+                    <br><br>
+                    <div class="row">
+                        <strong>JAVA</strong>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </div>
+                    <div class="middle">
+                        <div class="bar-container">
+                            <div class="bar-1"></div>
+                        </div>
+                    </div>
+                    <br><br><br>
+                    <div class="row">
+                        <strong>JAVASCRIPT</strong>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </div>
+                    <div class="middle">
+                        <div class="bar-container">
+                            <div class="bar-2"></div>
+                        </div>
+                    </div>
+                    <br><br><br>
+                    <div class="row">
+                        <strong>MYSQL</strong>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </div>
+                    <div class="middle">
+                        <div class="bar-container">
+                            <div class="bar-3"></div>
+                        </div>
+                    </div>
+                    <br><br><br>
+                    <div class="row">
+                        <strong>HTML</strong>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </div>
+                    <div class="middle">
+                        <div class="bar-container">
+                            <div class="bar-4"></div>
+                        </div>
+                    </div>
+                    <br><br><br>
+                    <div class="row">
+                        <strong>CSS</strong>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;
+                    </div>
+                    <div class="middle">
+                        <div class="bar-container">
+                            <div class="bar-5"></div>
+                        </div>
+                    </div>
+                    <br><br><br>
+                    <div class="row">
+                        <strong>PYTHON</strong>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;
+                    </div>
+                    <div class="middle">
+                        <div class="bar-container">
+                            <div class="bar-6"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% if(details["Course"]!="NA" ){ %>
+                <div class="course">
+                    <div class="heading" style="text-align: center;"><strong>
+                            <h3>Notification</h3>
+                        </strong></div>
+                    <div>
+                        <br>
+                        &nbsp;&nbsp;&nbsp;You have been assigned to complete a course : <%= details["Course"]%>.
+                    </div>
+                    <br><br>
+                    <form action="/update?status=Accepted" method="POST">
+                        <% if(details["Coursestatus"]=="Accepted" ){ %>
+                            <div>
+                                <input type="submit" value="Complete" id="Complete"
+                                    style="background-color: green;margin-left: 50px;height: 50px;width: 100px;" />
+                            </div>
+                            <% } else { %>
+                                <input type="submit" value="Accept" id="Accept"
+                                    style="background-color: green;margin-left: 50px;height: 50px;width: 100px;" />
+                                <%}%>
+
+                                    <br><br>
+                    </form>
+                </div>
+                <%}%>
+                    <br><br><br><br><br><br><br><br><br><br><br><br>
+                    <br><br><br><br><br><br><br><br><br><br><br><br>
+                    <br><br><br><br><br><br><br><br><br><br><br><br>
+                    <br><br><br><br><br><br><br><br><br><br><br><br>
+                    <br><br><br><br><br><br><br><br><br><br><br><br>
+                    <div class="aboutintern" id="aboutintern">
+                        <br><br><br><br><br><br><br><br><br>
+                        <h1>About Internship</h1>
+                        <hr size="2px" color="black">
+                        <br><br>
+                        <p style="font-size: large;">
+                            Its a three month internship on full stack web development, which includes general training
+                            on
+                            JAVA,MySQL,HTML,CSS and Spring frameworsks for the first one month.
+                            Then domain based training will be continued which focuses on specific tech stacks along
+                            with team
+                            assignments.
+                            Founded in 2000, Lister Technologies brings together Thought Leadership, Technology
+                            Expertise and
+                            Execution Excellence to deliver value to customers. We are industry experts in offering
+                            solutions
+                            around
+                            Digital CX space.
+                            <br><br>
+                            Lister is a company that expects its associates to provide solutions in the most demanding
+                            situations.
+                            However, Lister's systematic approach to motivate and nurture employees enables them to
+                            learn and
+                            grow
+                            with an opportunity to reach their ambitions. This makes us unique and allows us to provide
+                            world-class
+                            services to our clients. Skilled professionals with both functional and technical expertise
+                            are part
+                            of
+                            Lister team. Lister's employees have built a performance culture based on independence,
+                            simplicity,
+                            respect and creativity – enabling Lister to help its clients make progress.
+                            <br><br>
+                            Lister welcomes and encourages diversity in the workplace. We've been dedicated to meeting
+                            the
+                            changing
+                            needs of our customers and associates since our inception. Lister offers an outstanding
+                            experience
+                            to
+                            people through technology and process innovation.
+                        </p>
+                    </div>
+                    <br><br><br><br><br><br>
+        </div>
+        <footer class="footer" id="contact">
+            <div class="contact">
+                <h1>Contact</h1><br>
+                <p>1.800.701.3082</p>
+            </div>
+            <div class="ids">
+                <p><strong>
+                        <h1>Follow us on</h1>
+                    </strong></p><br>
+                <image src="/public/images/fb.png" height=70 width=70 onclick="facebook()"></image>
+                <image src="/public/images/twt.png" height=60 width=60 onclick="twitter()"></image>
+            </div>
+        </footer>
+        <br><br>
+        <centre>
+            <p style="color:cadetblue"> Lister Technologies, 2021.
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; All rights reserved.
+                s&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                Website
+                Privacy Policy Services
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                Privacy Policy
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                Information
+                Security
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                Terms & Conditions &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <br><br><br><br>
+
+                <!-- <script>
+
+                    document.getElementById("Accept").addEventListener("click", function () {
+                        // fetch('/update').catch(function (err) {
+                        //     console.log(err)
+
+                    })
+                </script> -->
+
+</body>
+
+</html>

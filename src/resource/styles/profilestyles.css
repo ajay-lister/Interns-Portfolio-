@@ -205,7 +205,7 @@ align-items: center;
 
 .footer 
 {
-  margin-left: -8%;
+  margin-left: -4%;
   margin-right: -5%;
   background-color:black;   
   bottom: 5px;  
@@ -233,3 +233,14 @@ a:hover
 {
   color: rgb(247, 142, 82);
 }
+
+.course
+{
+   margin-top: 80px;
+   border : solid black;
+    float : right;
+    width : 1130px;
+    margin-right: 5.3%;
+    background-color: white;
+    box-shadow: 5px 10px #888888;  
+  }

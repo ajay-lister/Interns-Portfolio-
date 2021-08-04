@@ -2,11 +2,13 @@ const express = require("express");
 const router = express.Router();
 const { loginschema } = require("./interntable");
 const { internschema } = require("./interntable");
+const { courseschema } = require("./interntable");
 // const { skillschema } = require("./interntable");
 const con = require("./dbconnection");
 const bodyParser = require("body-parser");
 const alert = require("alert");
 //const bcrypt = require("bcrypt");
+// const mailid = require("../resource/source/source")
 const Cryptr = require("cryptr");
 
 cryptr = new Cryptr("abc");
@@ -20,11 +22,13 @@ con.on("open", () => {
 router.use(bodyParser.urlencoded({ extended: true }));
 
 var detail = [];
+let name;
+let role;
 
-router.post("/validate", async (req, res) => {
+router.post("/Profile", async (req, res) => {
   var un = req.body.Name;
   var pwd = req.body.Password;
-
+  name=un;
   if (un == "admin" && pwd == "admin") {
     res.redirect("/demoprofile");
   } else {
@@ -36,8 +40,8 @@ router.post("/validate", async (req, res) => {
         internschema.findOne({ Name: un }, function (err, intern) {
           if (err) console.log(err);
           // detail = intern;
-          res.render('../View layer/demoprofile', {
-            details: intern,
+          res.render('../view/profile', {
+            details: intern
           });
         });
       }
@@ -48,7 +52,7 @@ router.post("/validate", async (req, res) => {
 router.get("/fetchall", async (req, res) => {
   internschema.find({}, function (err, intern) {
     if (err) console.log(err);
-    res.render('../View layer/Internslist.ejs', {
+    res.render('../view/Internslist.ejs', {
       interns: intern,
     });
   });
@@ -79,26 +83,27 @@ router.post("/fetchresult" ,async (req,res)=>
       var skill = req.body.selement;
       internschema.find({Skills : skill},function(err,skilled)
          {
-              // console.log(skilled)
-
-               res.render("../View layer/Internslist.ejs", {
+               //console.log(skilled)
+               res.render("../view/Internslist.ejs", {
                 interns: skilled,
-                });
+                }); 
               })
 
 })
 
 
-  const arr = req.body.Skills.split(",")
-  console.log(arr)
+  
 router.post("/", async (req, res) => {
+  const arr = req.body.Skills.split(",")
+  // console.log(arr)
+  console.log(req.body)
+  console.log(req.query)
   const pwd = cryptr.encrypt(req.body.Password);
   const login = new loginschema({
     _id: req.body.Eid,
     Name: req.body.Name,
     Password: pwd,
-    Role: req.body.Role
-
+    Role: req.body.Rolelist
   });
   const intern = new internschema({
     _id: req.body.Eid,
@@ -106,15 +111,10 @@ router.post("/", async (req, res) => {
     Domain: req.body.Domain,
     Skills: arr,
     Description: req.body.Description,
-    Mail: req.body.Mail
+    Mail: req.body.Mail,
+    Course: "NA",
+    Coursestatus : "NA"
   });
-
-  // const skill = new skillschema({
-  //   _id: req.body.Eid,
-  //   Skills : ["Java","Html"],
-  //   Rating : [7,8],
-  // });
-
 
   try {
     const i1 = await intern.save();
@@ -125,6 +125,33 @@ router.post("/", async (req, res) => {
     res.send("Error");
   }
 });
+
+router.post("/storecourse", async(req,res)=>{
+      //console.log(req.body)
+      //res.send("sent")
+      const course = req.body.course;
+      var f=false;
+      internschema.findOneAndUpdate({Mail : "ajay@listertechnologies.com"},{$set :{Course:course}},{upsert:true},function(err)
+      {
+             if(err) console.log(err)
+              f=true;
+      })
+      internschema.findOneAndUpdate({Mail : "ajay@listertechnologies.com" },{$set :{Coursestatus:"Nominated"}},{upsert:true},function(err)
+      {
+             if(err) console.log(err)
+             alert("Posted message successfully..!");
+      })
+})
+
+router.post("/update", async(req,res)=>
+{ 
+      const status = req.query.status;
+     internschema.findOneAndUpdate({Name : name},{$set :{Coursestatus:status}},{upsert:true},function(err)
+      {
+             if(err) console.log(err)
+              alert("Accepted the course successfully..!")
+      })
+})
 
 module.exports = {
   router: router,
