@@ -29,6 +29,7 @@ router.post("/Profile", async (req, res) => {
   var un = req.body.Name;
   var pwd = req.body.Password;
   name=un;
+  
   if (un == "admin" && pwd == "admin") {
     res.redirect("/demoprofile");
   } else {
@@ -37,6 +38,7 @@ router.post("/Profile", async (req, res) => {
       if (cryptr.decrypt(user.Password) != pwd || !user)
         alert("incorrect username/password");
       else {
+        role = user.Role;
         internschema.findOne({ Name: un }, function (err, intern) {
           if (err) console.log(err);
           // detail = intern;
@@ -52,9 +54,17 @@ router.post("/Profile", async (req, res) => {
 router.get("/fetchall", async (req, res) => {
   internschema.find({}, function (err, intern) {
     if (err) console.log(err);
+    if(role=="Manager"){
     res.render('../view/Internslist.ejs', {
       interns: intern,
     });
+  }
+  else
+  {
+      res.render('../view/Intern.ejs', {
+      interns: intern,
+    });
+  }
   });
 });
 
