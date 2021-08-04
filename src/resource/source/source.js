@@ -135,6 +135,17 @@ function closeMsgForm() {
   blur.classList.toggle("active");
 }
 
+function complete()
+{
+    document.getElementById("coursecomplete").style.display="block";
+}
+
+function clsForm()
+{
+  document.getElementById("coursecomplete").style.display = "none";
+}
+
+
 function postemail(course, duration) {
   Email.send({
     Host: "smtp.gmail.com",
@@ -158,5 +169,28 @@ function postemail(course, duration) {
     alert("mail sent successfully");
   });
 }
+
+function postcompletionmail(obj) {
+    const mid = obj.Mail;
+    console.log(mid);
+    Email.send({
+    Host: "smtp.gmail.com",
+    Username: "managersample7@gmail.com",
+    Password: "A123B123",
+    To: mid,
+    From: "managersample7@gmail.com",
+    Subject: "Course completion-Reg",
+    Body:
+      "Hi, I'm " + obj.Name+"(Id : "+obj._id+" )"+",I've completed the course : "+
+      "<bold>" +
+      obj.Course +
+      "</bold>" +
+      " within the given timeline" +
+      " <br> Thank you.",
+  }).then(function (message) {
+    alert("mail sent successfully");
+  });
+}
+
 
 module.exports = mailid;

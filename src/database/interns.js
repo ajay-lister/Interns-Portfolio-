@@ -156,11 +156,21 @@ router.post("/storecourse", async(req,res)=>{
 router.post("/update", async(req,res)=>
 { 
       const status = req.query.status;
+      if(status=="Accepted"){
      internschema.findOneAndUpdate({Name : name},{$set :{Coursestatus:status}},{upsert:true},function(err)
       {
              if(err) console.log(err)
               alert("Accepted the course successfully..!")
       })
+    }
+    else
+    {
+         internschema.findOneAndUpdate({Name : name},{$set :{Coursestatus:status}},{upsert:true},function(err)
+      {
+             if(err) console.log(err)
+            alert('sent')
+      }) 
+    }
 })
 
 module.exports = {

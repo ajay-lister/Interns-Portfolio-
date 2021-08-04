@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="/public/source/source.js"></script>
     <link type=" text/css" rel="stylesheet" href="/public/styles/profilestyles.css" />
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
 </head>
 
 <body>
@@ -105,8 +106,10 @@
                         </strong></div>
                     <br><br>
                     <div class="row">
-                        <strong>JAVA</strong>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <strong>
+                            <%=details["Skills"]["0"] %>
+                        </strong>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     </div>
                     <div class="middle">
                         <div class="bar-container">
@@ -115,8 +118,10 @@
                     </div>
                     <br><br><br>
                     <div class="row">
-                        <strong>JAVASCRIPT</strong>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <strong>
+                            <%=details["Skills"]["1"] %>
+                        </strong>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     </div>
                     <div class="middle">
                         <div class="bar-container">
@@ -125,8 +130,10 @@
                     </div>
                     <br><br><br>
                     <div class="row">
-                        <strong>MYSQL</strong>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <strong>
+                            <%=details["Skills"]["2"] %>
+                        </strong>
+
                     </div>
                     <div class="middle">
                         <div class="bar-container">
@@ -135,8 +142,10 @@
                     </div>
                     <br><br><br>
                     <div class="row">
-                        <strong>HTML</strong>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <strong>
+                            <%=details["Skills"]["3"] %>
+                        </strong>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     </div>
                     <div class="middle">
                         <div class="bar-container">
@@ -145,9 +154,10 @@
                     </div>
                     <br><br><br>
                     <div class="row">
-                        <strong>CSS</strong>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        &nbsp;&nbsp;
+                        <strong>
+                            <%=details["Skills"]["4"] %>
+                        </strong>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     </div>
                     <div class="middle">
                         <div class="bar-container">
@@ -155,8 +165,10 @@
                         </div>
                     </div>
                     <br><br><br>
-                    <div class="row">
-                        <strong>PYTHON</strong>
+                    <!-- <div class="row">
+                        <strong>
+                            <%=details["Skills"]["5"]%>
+                        </strong>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         &nbsp;&nbsp;
                     </div>
@@ -164,7 +176,7 @@
                         <div class="bar-container">
                             <div class="bar-6"></div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <% if(details["Course"]!="NA" ){ %>
@@ -177,21 +189,46 @@
                         &nbsp;&nbsp;&nbsp;You have been assigned to complete a course : <%= details["Course"]%>.
                     </div>
                     <br><br>
-                    <form action="/update?status=Accepted" method="POST">
-                        <% if(details["Coursestatus"]=="Accepted" ){ %>
-                            <div>
-                                <input type="submit" value="Complete" id="Complete"
-                                    style="background-color: green;margin-left: 50px;height: 50px;width: 100px;" />
-                            </div>
+                    <% if(details["Coursestatus"]=="Accepted" || details["Coursestatus"]=="Completed" ){ %>
+
+                        <div>
+                            <button onclick="complete()"
+                                style="background-color: green;margin-left: 50px;height: 50px;width: 100px;">Completed</button>
+                        </div>
+                        <form action="/update?status=Accepted" method="POST">
                             <% } else { %>
+
                                 <input type="submit" value="Accept" id="Accept"
                                     style="background-color: green;margin-left: 50px;height: 50px;width: 100px;" />
                                 <%}%>
-
-                                    <br><br>
-                    </form>
+                        </form>
+                        <br><br>
                 </div>
                 <%}%>
+
+
+
+                    <div class="coursecomplete" id="coursecomplete"
+                        style="font-family: Verdana, Geneva, Tahoma, sans-serif;display: none;">
+                        <br><br>
+                        <div class="coursetitle">
+                            Course Certificate :&nbsp;<input type="file" placeholder="Upload the course Certificate"
+                                style="width: 250px;height: 90px;" id="course" name="course">
+                        </div>
+                        <br><br>
+                        <br><br><br><br><br>
+                        <!-- postemail(document.getElementById('course').value,document.getElementById('duration').value,document.getElementById('tomail').value)" -->
+                        <!-- <button type="button" width="30px" class="btn post"><h3>Post E-Mail</h3></button> -->
+                        <button type="button" value="Post Message" class="btn post" style="height: 60px;"
+                            onclick="postcompletionmail(<%=details%>)">
+                            <h3>Done</h3>
+                        </button>
+                        <button type="button" width="30px" class="close" onclick="clsForm()">
+                            <h3>Close</h3>
+                        </button>
+                    </div>
+
+
                     <br><br><br><br><br><br><br><br><br><br><br><br>
                     <br><br><br><br><br><br><br><br><br><br><br><br>
                     <br><br><br><br><br><br><br><br><br><br><br><br>
@@ -270,15 +307,8 @@
                 Terms & Conditions &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <br><br><br><br>
 
-                <!-- <script>
-
-                    document.getElementById("Accept").addEventListener("click", function () {
-                        // fetch('/update').catch(function (err) {
-                        //     console.log(err)
-
-                    })
-                </script> -->
 
 </body>
+
 
 </html>

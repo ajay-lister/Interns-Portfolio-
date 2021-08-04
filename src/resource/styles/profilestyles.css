@@ -152,6 +152,7 @@ align-items: center;
     background-color: #f1f1f1;
     text-align: center;
     color: white;
+    margin-left: 10%;
   }
 
 .bar-1 {
@@ -244,3 +245,39 @@ a:hover
     background-color: white;
     box-shadow: 5px 10px #888888;  
   }
+
+.post {
+  margin-left: 40px;
+  color: white;
+  font-size: 12px;
+  background-color: green;
+  width: 30%;
+  padding: 4px;
+  font-weight: bold;
+  float: left;
+}
+
+.close {
+  margin-right: 40px;
+  color: white;
+  font-size: 12px;
+  background-color: red;
+  width: 30%;
+  padding: 4px;
+  font-weight: bold;
+  float: right;
+}
+
+.coursecomplete{
+  display: none;
+  display: flex;
+  margin: 20px;
+  width: 50%;
+  height: 40%;
+  top: 20%;
+  border: 3px solid black;
+  padding: 2px;
+  background-color: white;
+  position: fixed;
+  left: 300px;
+}
