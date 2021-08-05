@@ -1,17 +1,13 @@
+//imports
 const express = require("express");
 const router = express.Router();
 const { loginschema } = require("./interntable");
 const { internschema } = require("./interntable");
 const { courseschema } = require("./interntable");
-// const { skillschema } = require("./interntable");
 const con = require("./dbconnection");
 const store = require('store');
-// var LocalStorage = require('node-localstorage').LocalStorage,
-// localStorage = new LocalStorage('./scratch');
 const bodyParser = require("body-parser");
 const alert = require("alert");
-//const bcrypt = require("bcrypt");
-// const mailid = require("../resource/source/source")
 const Cryptr = require("cryptr");
 
 cryptr = new Cryptr("abc");
@@ -21,13 +17,14 @@ con.on("open", () => {
   console.log("Connected....");
 });
 
-
+//middleware
 router.use(bodyParser.urlencoded({ extended: true }));
 
 var detail = [];
 let name;
 let role;
 
+//Profile page routing
 router.post("/Profile", async (req, res) => {
   var un = req.body.Name;
   var pwd = req.body.Password;
@@ -38,8 +35,14 @@ router.post("/Profile", async (req, res) => {
   } else {
     loginschema.findOne({ Name: un }, function (err, user) {
       if (err) console.log(err);
-      if (cryptr.decrypt(user.Password) != pwd || !user)
-        alert("incorrect username/password");
+      if(user==null)
+      {
+        alert("Incorrect Username..Please try again!")
+      }
+      else if (cryptr.decrypt(user.Password) != pwd){
+        alert("Incorrect Password..Please try again!");
+        res.redirect("/Homepage")
+      }
       else {
         role = user.Role;
         internschema.findOne({ Name: un }, function (err, intern) {
@@ -54,6 +57,8 @@ router.post("/Profile", async (req, res) => {
   }
 });
 
+
+//Internslist page routing
 router.get("/fetchall", async (req, res) => {
   internschema.find({}, function (err, intern) {
     if (err) console.log(err);
@@ -71,24 +76,8 @@ router.get("/fetchall", async (req, res) => {
   });
 });
 
-// router.get("/fetchresult", async (req, res) => {
-//           var skill = req.body.selement;
-//           console.log(skill)
-//          skillschema.find({Skills : { "$in" :skill}},function(err,skilldetail)
-//          {
-//               const id = JSON.stringify(skilldetail).substring(49,53);
-//               console.log(id)
-//              internschema.find({ },function(err,detail)
-//             { 
-//                 if (err) console.log(err);
-//                 //console.log(detail)
-//                 res.render("../View layer/Internslist.ejs", {
-//                 interns: detail,
-//                 });
-//          })
-//         });
-//       });
 
+//Search operation
 router.post("/fetchresult" ,async (req,res)=>
 {
       // console.log(req.body.selement)
@@ -105,12 +94,12 @@ router.post("/fetchresult" ,async (req,res)=>
 })
 
 
-  
+//Sign up   
 router.post("/", async (req, res) => {
   const arr = req.body.Skills.split(",")
   // console.log(arr)
-  console.log(req.body)
-  console.log(req.query)
+  // console.log(req.body)
+  // console.log(req.query)
   const pwd = cryptr.encrypt(req.body.Password);
   const login = new loginschema({
     _id: req.body.Eid,
@@ -132,16 +121,16 @@ router.post("/", async (req, res) => {
   try {
     const i1 = await intern.save();
     const i2 = await login.save();
-    // const i3 = await skill.save();
     res.redirect("/Homepage");
   } catch (err) {
     res.send("Error");
   }
 });
 
+
+//Nominate operation
 router.post("/storecourse", async(req,res)=>{
       //console.log(req.body)
-       console.log( store.get('mid'));
       const course = req.body.course;
       var f=false;
       internschema.findOneAndUpdate({Mail : "ajayshankar257@gmail.com"},{$set :{Course:course}},{upsert:true},function(err)
@@ -153,9 +142,11 @@ router.post("/storecourse", async(req,res)=>{
       {
              if(err) console.log(err)
              alert("Posted message successfully..!");
+             res.redirect("/fetchall")
       })
 })
 
+//Update course status
 router.post("/update", async(req,res)=>
 { 
       const status = req.query.status;
@@ -176,6 +167,7 @@ router.post("/update", async(req,res)=>
     }
 })
 
+//exports 
 module.exports = {
   router: router,
   details: detail,
