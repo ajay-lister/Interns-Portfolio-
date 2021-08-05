@@ -170,3 +170,11 @@ a:hover
 {
   color: rgb(247, 142, 82);
 }
+
+/* .alerts {
+    position: fixed;
+    z-index: 10000;
+    width: 13.500em;
+    top: 1em;
+    right: 1em;
+} */
