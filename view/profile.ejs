@@ -189,20 +189,21 @@
                         &nbsp;&nbsp;&nbsp;You have been assigned to complete a course : <%= details["Course"]%>.
                     </div>
                     <br><br>
-                    <% if(details["Coursestatus"]=="Accepted" || details["Coursestatus"]=="Completed" ){ %>
+                    <form action="/update?status=Accepted" method="POST">
+                        <% if(details["Coursestatus"]=="Accepted" || details["Coursestatus"]=="Completed" ){ %>
 
-                        <div>
-                            <button onclick="complete()"
-                                style="background-color: green;margin-left: 50px;height: 50px;width: 100px;">Completed</button>
-                        </div>
-                        <form action="/update?status=Accepted" method="POST">
+                            <div>
+                                <button onclick="complete()"
+                                    style="background-color: green;margin-left: 50px;height: 50px;width: 100px;">Completed</button>
+                            </div>
                             <% } else { %>
 
                                 <input type="submit" value="Accept" id="Accept"
                                     style="background-color: green;margin-left: 50px;height: 50px;width: 100px;" />
                                 <%}%>
-                        </form>
-                        <br><br>
+
+                                    <br><br>
+                    </form>
                 </div>
                 <%}%>
 
@@ -212,11 +213,12 @@
                         style="font-family: Verdana, Geneva, Tahoma, sans-serif;display: none;">
                         <br><br>
                         <div class="coursetitle">
-                            Course Certificate :&nbsp;<input type="file" placeholder="Upload the course Certificate"
-                                style="width: 250px;height: 90px;" id="course" name="course">
+                            <h4> Course Certificate :&nbsp;<input type="file"
+                                    placeholder="Upload the course Certificate" style="width: 250px;height: 90px;"
+                                    id="course" name="course">
+                            </h4>
                         </div>
-                        <br><br>
-                        <br><br><br><br><br>
+
                         <!-- postemail(document.getElementById('course').value,document.getElementById('duration').value,document.getElementById('tomail').value)" -->
                         <!-- <button type="button" width="30px" class="btn post"><h3>Post E-Mail</h3></button> -->
                         <button type="button" value="Post Message" class="btn post" style="height: 60px;"

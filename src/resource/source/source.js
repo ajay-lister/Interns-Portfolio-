@@ -1,3 +1,5 @@
+const store = require('store');
+
 let mailid;
 
 function openForm(intern) {
@@ -122,7 +124,7 @@ function msgform(intern) {
   document.getElementById("tomail").innerHTML =
     "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Receiver Mail-Id :&nbsp;" +
     intern.Mail;
-  mailid = intern.Mail;
+  // mailid = intern.Mail;
   var blur = document.getElementById("blur");
   blur.classList.toggle("active");
 }

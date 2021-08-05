@@ -5,6 +5,9 @@ const { internschema } = require("./interntable");
 const { courseschema } = require("./interntable");
 // const { skillschema } = require("./interntable");
 const con = require("./dbconnection");
+const store = require('store');
+// var LocalStorage = require('node-localstorage').LocalStorage,
+// localStorage = new LocalStorage('./scratch');
 const bodyParser = require("body-parser");
 const alert = require("alert");
 //const bcrypt = require("bcrypt");
@@ -54,16 +57,16 @@ router.post("/Profile", async (req, res) => {
 router.get("/fetchall", async (req, res) => {
   internschema.find({}, function (err, intern) {
     if (err) console.log(err);
-    if(role=="Manager"){
-    res.render('../view/Internslist.ejs', {
+    if(role=="Intern"){
+   res.render('../view/Intern.ejs', {
       interns: intern,
     });
   }
   else
   {
-      res.render('../view/Intern.ejs', {
+     res.render('../view/Internslist.ejs', {
       interns: intern,
-    });
+    });   
   }
   });
 });
@@ -138,15 +141,15 @@ router.post("/", async (req, res) => {
 
 router.post("/storecourse", async(req,res)=>{
       //console.log(req.body)
-      //res.send("sent")
+       console.log( store.get('mid'));
       const course = req.body.course;
       var f=false;
-      internschema.findOneAndUpdate({Mail : "ajay@listertechnologies.com"},{$set :{Course:course}},{upsert:true},function(err)
+      internschema.findOneAndUpdate({Mail : "ajayshankar257@gmail.com"},{$set :{Course:course}},{upsert:true},function(err)
       {
              if(err) console.log(err)
               f=true;
       })
-      internschema.findOneAndUpdate({Mail : "ajay@listertechnologies.com" },{$set :{Coursestatus:"Nominated"}},{upsert:true},function(err)
+      internschema.findOneAndUpdate({Mail : "ajayshankar257@gmail.com" },{$set :{Coursestatus:"Nominated"}},{upsert:true},function(err)
       {
              if(err) console.log(err)
              alert("Posted message successfully..!");
