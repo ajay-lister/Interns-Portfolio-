@@ -1,3 +1,5 @@
+const store = require('store');
+
 let mailid;
 
 function openForm(intern) {
@@ -5,13 +7,15 @@ function openForm(intern) {
   var id = intern._id;
   var desc = intern.Description;
   var mail = intern.Mail;
+  var skills = intern.Skills;
   // var skills = intern[`${index}`]['skills'];
   document.getElementById("uname").innerHTML = na;
   document.getElementById("id").innerHTML = "<b>ID : </b>" + id;
   document.getElementById("about").innerHTML = desc;
-  document.getElementById("mailid").innerHTML =
-    "<strong>&nbsp;Mail Id : </strong>" + mail;
-  document.getElementById("skills").innerHTML = "Java,JavaScript,HTML";
+
+  document.getElementById("mailid").innerHTML = "<strong>&nbsp;Mail Id : </strong>" + mail;
+  document.getElementById("skills").innerHTML = skills;
+
   document.getElementById("myForm").style.display = "block";
   var blur = document.getElementById("blur");
   blur.classList.toggle("active");
@@ -120,7 +124,7 @@ function msgform(intern) {
   document.getElementById("tomail").innerHTML =
     "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Receiver Mail-Id :&nbsp;" +
     intern.Mail;
-  mailid = intern.Mail;
+  // mailid = intern.Mail;
   var blur = document.getElementById("blur");
   blur.classList.toggle("active");
 }
@@ -132,6 +136,17 @@ function closeMsgForm() {
   var blur = document.getElementById("main");
   blur.classList.toggle("active");
 }
+
+function complete()
+{
+    document.getElementById("coursecomplete").style.display="block";
+}
+
+function clsForm()
+{
+  document.getElementById("coursecomplete").style.display = "none";
+}
+
 
 function postemail(course, duration) {
   Email.send({
@@ -156,3 +171,28 @@ function postemail(course, duration) {
     alert("mail sent successfully");
   });
 }
+
+function postcompletionmail(obj) {
+    const mid = obj.Mail;
+    console.log(mid);
+    Email.send({
+    Host: "smtp.gmail.com",
+    Username: "managersample7@gmail.com",
+    Password: "A123B123",
+    To: mid,
+    From: "managersample7@gmail.com",
+    Subject: "Course completion-Reg",
+    Body:
+      "Hi, I'm " + obj.Name+"(Id : "+obj._id+" )"+",I've completed the course : "+
+      "<bold>" +
+      obj.Course +
+      "</bold>" +
+      " within the given timeline" +
+      " <br> Thank you.",
+  }).then(function (message) {
+    alert("mail sent successfully");
+  });
+}
+
+
+module.exports = mailid;
