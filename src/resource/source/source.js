@@ -1,6 +1,6 @@
 const store = require('store');
 
-let mailid;
+let mailid="";
 
 //Description form-Internslist page
 function openForm(intern) {
@@ -9,7 +9,6 @@ function openForm(intern) {
   var desc = intern.Description;
   var mail = intern.Mail;
   var skills = intern.Skills;
-  // var skills = intern[`${index}`]['skills'];
   document.getElementById("uname").innerHTML = na;
   document.getElementById("id").innerHTML = "<b>ID : </b>" + id;
   document.getElementById("about").innerHTML = desc;
@@ -48,6 +47,7 @@ function msgform(intern) {
   document.getElementById("tomail").innerHTML =
     "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Receiver Mail-Id :&nbsp;" +
     intern.Mail;
+  document.getElementById("tomail").value = intern.Mail;
   // mailid = intern.Mail;
   var blur = document.getElementById("blur");
   blur.classList.toggle("active");
@@ -101,4 +101,9 @@ function postcompletionmail(obj) {
 }
 
 
-module.exports = mailid;
+function returnmail()
+{
+    return mailid;
+}
+
+module.exports = returnmail;
