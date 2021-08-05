@@ -130,21 +130,24 @@ router.post("/", async (req, res) => {
 
 //Nominate operation
 router.post("/storecourse", async(req,res)=>{
-      //console.log(req.body)
+  
       const course = req.body.course;
+      const mail = req.body.mail;
       var f=false;
-      internschema.findOneAndUpdate({Mail : "ajayshankar257@gmail.com"},{$set :{Course:course}},{upsert:true},function(err)
+      internschema.findOneAndUpdate({Mail : mail},{$set :{Course:course}},{upsert:true},function(err)
       {
              if(err) console.log(err)
               f=true;
       })
-      internschema.findOneAndUpdate({Mail : "ajayshankar257@gmail.com" },{$set :{Coursestatus:"Nominated"}},{upsert:true},function(err)
+      internschema.findOneAndUpdate({Mail : mail},{$set :{Coursestatus:"Nominated"}},{upsert:true},function(err)
       {
              if(err) console.log(err)
              alert("Posted message successfully..!");
              res.redirect("/fetchall")
       })
 })
+
+
 
 //Update course status
 router.post("/update", async(req,res)=>
