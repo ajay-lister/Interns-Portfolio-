@@ -9,6 +9,7 @@ const store = require('store');
 const bodyParser = require("body-parser");
 const alert = require("alert");
 const Cryptr = require("cryptr");
+const { default: swal } = require("sweetalert");
 
 cryptr = new Cryptr("abc");
 
@@ -23,7 +24,7 @@ router.use(bodyParser.urlencoded({ extended: true }));
 var detail = [];
 let name;
 let role;
-
+let duration;
 //Profile page routing
 router.post("/Profile", async (req, res) => {
   var un = req.body.Name;
@@ -37,6 +38,7 @@ router.post("/Profile", async (req, res) => {
       if (err) console.log(err);
       if(user==null)
       {
+        //  swal("Incorrect Username..Please try again!","error")
         alert("Incorrect Username..Please try again!")
       }
       else if (cryptr.decrypt(user.Password) != pwd){
@@ -59,7 +61,7 @@ router.post("/Profile", async (req, res) => {
 
 
 //Internslist page routing
-router.get("/fetchall", async (req, res) => {
+router.get("/Listofinterns", async (req, res) => {
   internschema.find({}, function (err, intern) {
     if (err) console.log(err);
     if(role=="Intern"){
@@ -86,6 +88,7 @@ router.post("/fetchresult" ,async (req,res)=>
       internschema.find({Skills : skill},function(err,skilled)
          {
                //console.log(skilled)
+               if(skilled.length==0)  alert("No intern found...Please nominate an intern for a course..!")
                res.render("../view/Internslist.ejs", {
                 interns: skilled,
                 }); 
@@ -133,6 +136,7 @@ router.post("/storecourse", async(req,res)=>{
   
       const course = req.body.course;
       const mail = req.body.mail;
+      duration = req.body.duration;
       var f=false;
       internschema.findOneAndUpdate({Mail : mail},{$set :{Course:course}},{upsert:true},function(err)
       {
@@ -143,7 +147,7 @@ router.post("/storecourse", async(req,res)=>{
       {
              if(err) console.log(err)
              alert("Posted message successfully..!");
-             res.redirect("/fetchall")
+             res.redirect("/Listofinterns")
       })
 })
 
@@ -158,6 +162,12 @@ router.post("/update", async(req,res)=>
       {
              if(err) console.log(err)
               alert("Accepted the course successfully..!")
+              internschema.findOne({Name:name},function(err,intern)
+              {
+                    res.render('../view/profile', {
+                    details: intern
+                     });
+              })
       })
     }
     else
@@ -165,10 +175,27 @@ router.post("/update", async(req,res)=>
          internschema.findOneAndUpdate({Name : name},{$set :{Coursestatus:status}},{upsert:true},function(err)
       {
              if(err) console.log(err)
-            alert('sent')
       }) 
     }
 })
+
+//change skills
+router.post("/changeskills",async(req,res)=>
+{
+        //console.log(name)
+        //console.log(req.body)
+        const arr = req.body.newskills.split(",")
+      internschema.findOneAndUpdate({Name : name},{$set :{Skills:arr}},{upsert:true},function(err)
+      {
+              internschema.findOne({Name:name},function(err,intern)
+              {
+                    res.render('../view/profile', {
+                    details: intern
+                     });
+              })
+      }) 
+})
+
 
 //exports 
 module.exports = {

@@ -7,11 +7,11 @@ app.use(express.json());
 
 app.use("/", router);
 app.use("/Profile", router);
-app.use("/fetchall", router);
+app.use("/Listofinterns", router);
 app.use("/fetchresult", router);
 app.use("/storecourse",router);
 app.use("/update",router);
-
+app.use("/changeskills",router);
 
 app.use("/public", express.static(path.join(__dirname + "/../resource")));
 

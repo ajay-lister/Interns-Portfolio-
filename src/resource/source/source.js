@@ -74,7 +74,16 @@ function clsForm()
   document.getElementById("coursecomplete").style.display = "none";
 }
 
+//update skills pop box
+function change()
+{
+    document.getElementById("updateskill").style.display = "block"
+}
 
+function closeupdate()
+{
+  document.getElementById("updateskill").style.display = "none";
+}
 
 //Email to manager - course completion - Profile page
 function postcompletionmail(obj) {
@@ -95,8 +104,8 @@ function postcompletionmail(obj) {
       " within the given timeline" +
       " <br> Thank you."
   }).then(function (message) {
-    alert("mail sent successfully");
-    window.href=window.history.back()
+    alert("Mail sent successfully");
+    // window.href=window.history.back()
   });
 }
 

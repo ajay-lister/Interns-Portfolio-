@@ -32,7 +32,7 @@
                     <div class="dropdown">
                         <button class="dropbtn">Interns</button>
                         <div class="dropdown-content">
-                            <a href="/fetchall">List</a>
+                            <a href="/Listofinterns">List</a>
                             <a href="#aboutintern">About Internship</a>
                         </div>
                     </div>
@@ -104,7 +104,11 @@
                 <div class="skills">
                     <div class="heading"><strong>
                             <h3>SKILLS</h3>
-                        </strong></div>
+                        </strong>
+                        <button onclick="change()"
+                            style="float: right; margin-top: -4%;margin-right: 3%;padding: 7px;"><strong>
+                                Edit skills</strong></button>
+                    </div>
                     <br><br>
                     <div class="row">
                         <strong>
@@ -190,21 +194,22 @@
                         &nbsp;&nbsp;&nbsp;You have been assigned to complete a course : <%= details["Course"]%>.
                     </div>
                     <br><br>
-                    <form action="/update?status=Accepted" method="POST">
-                        <% if(details["Coursestatus"]=="Accepted" || details["Coursestatus"]=="Completed" ){ %>
+                    <% if(details["Coursestatus"]=="Accepted" || details["Coursestatus"]=="Completed" ){ %>
 
-                            <div>
-                                <button onclick="complete()"
-                                    style="background-color: green;margin-left: 50px;height: 50px;width: 100px;">Completed</button>
-                            </div>
-                            <% } else { %>
+                        <div>
+                            <button onclick="complete()"
+                                style="background-color: green;margin-left: 50px;height: 50px;width: 100px;">Completed</button>
+                        </div>
+                        <% } else { %>
+                            <form action="/update?status=Accepted" method="POST">
 
                                 <input type="submit" value="Accept" id="Accept"
                                     style="background-color: green;margin-left: 50px;height: 50px;width: 100px;" />
-                                <%}%>
+                            </form>
+                            <%}%>
 
-                                    <br><br>
-                    </form>
+                                <br><br>
+
                 </div>
                 <%}%>
 
@@ -229,6 +234,24 @@
                         <button type="button" width="30px" class="close" onclick="clsForm()">
                             <h3>Close</h3>
                         </button>
+                    </div>
+
+
+                    <div class="updateskill" id="updateskill"
+                        style="display: none;height: 150px;margin-top: 10%;margin-left: 20%;height: 170px;">
+                        <form action="/changeskills" method="POST">
+                            <br><br>&nbsp;&nbsp;
+                            <strong>Skills :&nbsp;&nbsp;</strong><input type="text" name="newskills" id="newskills"
+                                placeholder="Enter yout new skills to update"
+                                style="width: 300px;height: 20px;padding: 15px;" /><br><br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type="submit" value="Update"
+                                style="background-color:green;margin-left: 50px;height: 40px;width: 100px;color: white;" />
+                            &nbsp;&nbsp;
+                            <input type="button" value="Close" onclick="closeupdate()"
+                                style="background-color:red;margin-left: 50px;height: 40px;width: 100px;color:white" />
+
+                        </form>
                     </div>
 
 
