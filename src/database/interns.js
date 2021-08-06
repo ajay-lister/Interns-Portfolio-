@@ -9,7 +9,7 @@ const store = require('store');
 const bodyParser = require("body-parser");
 const alert = require("alert");
 const Cryptr = require("cryptr");
-const { default: swal } = require("sweetalert");
+// const { default: swal } = require("sweetalert");
 
 cryptr = new Cryptr("abc");
 
@@ -196,6 +196,15 @@ router.post("/changeskills",async(req,res)=>
       }) 
 })
 
+router.get("/redirect",async(req,res)=>
+{
+   internschema.findOne({Name:name},function(err,intern)
+    {
+                    res.render('../view/profile', {
+                    details: intern
+                     });
+     })
+})
 
 //exports 
 module.exports = {

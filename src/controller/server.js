@@ -12,6 +12,7 @@ app.use("/fetchresult", router);
 app.use("/storecourse",router);
 app.use("/update",router);
 app.use("/changeskills",router);
+app.use("/redirect",router);
 
 app.use("/public", express.static(path.join(__dirname + "/../resource")));
 
