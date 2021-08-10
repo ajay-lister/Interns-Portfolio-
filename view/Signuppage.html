@@ -4,6 +4,9 @@
 <head>
   <script src="/public/source/source.js"></script>
   <link rel="stylesheet" href="/public/styles/signupstyles.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 
 <body background="/public/images/db.png">
@@ -33,13 +36,13 @@
   <div class="container">
     <form class="singupform" method="post" action="/">
       <strong><label>Username : </label></strong>
-      <input type="text" placeholder="Enter Username" id="Name" name="Name">
+      <input type="text" placeholder="Enter Username" id="Name" name="Name" class="form-control">
       <strong><label>Password : </label></strong>
-      <input type="password" placeholder="Enter Password" id="Password" name="Password">
+      <input type="password" placeholder="Enter Password" id="Password" name="Password" class="form-control">
       <strong><label>Employee Id :</label></strong>
-      <input type="text" placeholder="Enter employee id" id="Eid" name="Eid">
+      <input type="text" placeholder="Enter employee id" id="Eid" name="Eid" class="form-control">
       <strong><label>Mail ID :</label></strong>
-      <input type="text" placeholder="Enter Mail Id" id="Mail" name="Mail">
+      <input type="text" placeholder="Enter Mail Id" id="Mail" name="Mail" class="form-control">
       <!-- <strong><label>Role :</label></strong>
       <input type="text" placeholder="Enter your Role " id="Role" name="Role"> -->
       <br><br>
@@ -50,11 +53,12 @@
       </select>
       <br><br>
       <strong><label>Domain :</label></strong>
-      <input type="text" placeholder="Enter your domain " id="Domain" name="Domain">
+      <input type="text" placeholder="Enter your domain " id="Domain" name="Domain" class="form-control">
       <strong><label>Skills :</label></strong>
-      <input type="text" placeholder="Enter your skills  " id="Skills" name="Skills">
+      <input type="text" placeholder="Enter your skills  " id="Skills" name="Skills" class="form-control">
       <strong><label>Description :</label></strong>
-      <input type="text" placeholder="Enter a short description about you " id="Description" name="Description">
+      <input type="text" placeholder="Enter a short description about you " id="Description" name="Description"
+        class="form-control">
       </br>
       </br>
       <input type="checkbox" id="confirmation" required />

@@ -2,101 +2,175 @@
 <html>
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+  <script src="float-panel.js"></script>
   <script src="/public/source/source.js"></script>
   <link type="text/css" rel="stylesheet" href="/public/styles/homepagestyles.css" />
 </head>
 
-<body background="/public/images/db.png">
-  <div class="bodycontent">
-    <header>
-      <nav>
-        <ul>
-          <br><br>
-          <li>
-            <div class="logo">
-              <img src="/public/images/listerlogo.png" width="300" height="70" />
-              &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-              &emsp;&emsp;&emsp;&emsp;&emsp; &emsp; &emsp;&emsp;&emsp;&emsp;
-            </div>
-          </li>
-          &emsp; &emsp; &emsp;&emsp;&emsp;&emsp;&emsp; &emsp; &emsp;&emsp;&emsp;&emsp;
-          &emsp; &emsp; &emsp;&emsp;&emsp;&emsp;&emsp; &emsp; &emsp;&emsp;&emsp;&emsp;
-          &emsp;&emsp;&emsp;&emsp;&emsp; &emsp; &emsp;&emsp;&emsp;&emsp;
-          &emsp; &emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-          &emsp; &emsp;&emsp; &emsp;&emsp; &emsp;&emsp;&emsp; &emsp;&emsp;&emsp; &emsp;&emsp;&emsp; &emsp;
-          &emsp;&emsp; &emsp;&emsp;&emsp; &emsp;&emsp;&emsp; &emsp;&emsp;&emsp;
-          <br>
-          <li>
-            <a href="/Homepage"> Home </a>
-          </li>
-          <li>
-            <a href="Homepage#contact"> Contact </a>
-          </li>
-          <li> <a href="Homepage#about"> About us </a>
-          </li>
-          <li>
-            <a href="/signup"> Join Us </a>
-          </li>
-        </ul>
-      </nav>
-    </header>
+<body background="/public/images/db.png" style="background-size: cover;">
+  <header>
+    <nav class="nav">
+      <ul>
+        <li>
+          <div class="logo" style="width: 40%;">
+            <img src="/public/images/listerlogo.png" width="300" height="70" />
+          </div>
+        </li>
+        <li>
+          <a href="/Homepage" class="active" style="text-decoration:none;">
+            <h4><strong> Home</strong></h4>
+          </a>
+        </li>
+        <li> <a href="#about" style="text-decoration:none;margin-left: 5%;">
+            <h4><strong>About us</strong></h4>
+          </a>
+        </li>
+        <li>
+          <a href="Homepage#contact" style="text-decoration:none;margin-left: 5%;">
+            <h4><strong>Contact</strong></h4>
+          </a>
+        </li>
+        <li>
+          <a href="/signup" style="text-decoration:none;margin-left: 5%;">
+            <h4><strong>Join Us</strong></h4>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class=" bodycontent">
+    <div class="bgvideo">
+      <video autoplay muted loop id="myVideo">
+        <source src="/public/images/bgvideo.mp4" type="video/mp4">
+      </video>
+    </div>
   </div>
+
   <div class="form-popup" id="myForm">
     <div class="left">
-      <image src="/public/images/lister.png"></image><br><br><br>
-      <image src="/public/images/lister1.png" width="650"></image>
+      <image src="/public/images/lister.png" alt="Cinque Terre" width="800" height="320"></image>
+      <image src="/public/images/lister1.png" alt="Cinque Terre" width="790" height="286" style="margin-left:-4%">
+      </image>
     </div>
     <div class="right">
       <form name="loginform" action="/Profile" class="form-container" method="POST">
         <h1>Login</h1>
-
-        <label for="Name"><b>Username</b></label>
-        <input type="text" placeholder="Enter Username" id="Name" name="Name" required>
-        <label for="Password"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" id="Password" name="Password" required>
+        <br><br>
+        <label for="Name" style="font-size: 18px;"><b>Username</b></label>
+        <input type="text" class="form-control" style="height:50px" placeholder="Enter Username" id="Name" name="Name"
+          required>
+        <label for="Password" style="font-size: 18px;"><b>Password</b></label>
+        <input type="password" class="form-control" style="height:50px" placeholder="Enter Password" id="Password"
+          name="Password" required>
 
         <button type="submit" class="btn">Login</button>
       </form>
     </div>
   </div>
-  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-  <br><br>
-  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+
+  <br>
   <section id="about">
     <div class="aboutus-container">
       <br><br><br><br><br><br>
       <h1>About Us</h1>
       <hr size="2px" color="black">
       <p>
-        Lister Technologies was established in 2000, headquartered in Chennai. In 2004, we began working as an extended
-        professional services team of a leading e-mail marketing company and started our journey with digital marketing
-        services. Three years later, we began working with a sizeable ed-tech customer and focused on retail and
-        e-commerce, simultaneously building our Salesforce Practice by becoming one of the first partners for Salesforce
+        Lister Technologies was established in 2000, headquartered in Chennai. In 2004, we began working as an
+        extended
+        professional services team of a leading e-mail marketing company and started our journey with digital
+        marketing
+        services. Three years later, we began working with a sizeable ed-tech customer and focused on retail
+        and
+        e-commerce, simultaneously building our Salesforce Practice by becoming one of the first partners for
+        Salesforce
         in India. <br><br><br>
 
-        By 2009, we started working on the Adobe and Google marketing platforms. That same year, we garnered another
+        By 2009, we started working on the Adobe and Google marketing platforms. That same year, we garnered
+        another
         feather in our cap when we won a Salesforce Customer Satisfaction Award.
 
-        In 2010, ten years after we began operations, we opened our second office in Chennai for housing our software
-        development unit. One year later, we added a large cement manufacturing group in our elite list of enterprise
-        clients and a Fortune 500 nutraceutical company, and by 2012, entered into an agreement with Responsys to become
-        their professional services arm for their global clients and to assist them in product engineering. <br><br><br>
+        In 2010, ten years after we began operations, we opened our second office in Chennai for housing our
+        software
+        development unit. One year later, we added a large cement manufacturing group in our elite list of
+        enterprise
+        clients and a Fortune 500 nutraceutical company, and by 2012, entered into an agreement with Responsys
+        to become
+        their professional services arm for their global clients and to assist them in product engineering.
+        <br><br><br>
 
-        In the six years, between 2014 and 2020, we grew exponentially, opening a US subsidiary (2016) and partnering
-        with numerous companies there, like BigCommerce, Oracle, WooCommerce, Tealium, Braze, Iterable and Mparticle. We
+        In the six years, between 2014 and 2020, we grew exponentially, opening a US subsidiary (2016) and
+        partnering
+        with numerous companies there, like BigCommerce, Oracle, WooCommerce, Tealium, Braze, Iterable and
+        Mparticle. We
         also signed on other notable enterprises and Fortune 500 clients, in hi-tech, BFSI, retail, travel and
         entertainment verticals. <br><br><br>
 
-        Today, we are a 300-member company and have established ourselves as one of the top Oracle Marketing Cloud
-        partners, globally, as well as one of the most experienced Salesforce partners in South Asia. We support
-        numerous Fortune 500 companies, delivering immense value to our customers through thought leadership, technical
-        expertise and execution excellence. We hope to continue on this same path, evolving further and growing from
+        Today, we are a 300-member company and have established ourselves as one of the top Oracle Marketing
+        Cloud
+        partners, globally, as well as one of the most experienced Salesforce partners in South Asia. We
+        support
+        numerous Fortune 500 companies, delivering immense value to our customers through thought leadership,
+        technical
+        expertise and execution excellence. We hope to continue on this same path, evolving further and
+        growing from
         strength to strength—whether it be our revenues, workforce, clients or partners.<br><br><br>
       </p>
     </div>
   </section>
+
+  <div class="container text-center" style="background-color: black;color:white;height: 300px;width: 1400px;">
+    <h2>Services We Provide</h2>
+    <div id="myCarousel" class="carousel slide" data-ride="carousel" style="height: 100px;">
+      <!-- Indicators -->
+      <ol class="carousel-indicators" style="margin-bottom: -100px;">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+      </ol>
+
+      <div class="carousel-inner" style="color:#ccc5c5">
+        <div class="item active" style="margin-top:80px">
+          <h4>The interns can build their profile inorder to<br>
+            showcase theri skills...!</h4>
+        </div>
+
+        <div class="item" style="margin-top:80px">
+          <h4>The Managers can search and get the best resource <br>
+            for the projects.</h4>
+        </div>
+
+        <div class="item" style="margin-top:80px">
+          <h4>The Managers can nominate an intern to learn the <br>
+            skill required and make him buildable..!</h4>
+        </div>
+      </div>
+
+      <!-- Left and right controls -->
+      <a class="left carousel-control" href="#myCarousel" data-slide="prev" style="width: 100px;height:200px">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#myCarousel" data-slide="next" style="width:100px;height: 200px;">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  </div>
+
+
+
+  <br><br><br><br><br><br><br><br><br><br>
+  <br><br>
+  <br><br><br><br><br><br><br><br><br><br>
   <br><br>
   <footer class="footer" id="contact">
     <div class="contact">
@@ -114,13 +188,19 @@
   <br><br>
   <centre>
     <p style="color:cadetblue"> Lister Technologies, 2021.
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; All rights reserved.
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Website Privacy
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      All rights
+      reserved.
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      Website
+      Privacy
       Policy Services
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      Privacy Policy &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      Privacy Policy
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       Information Security
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Terms &
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      Terms &
       Conditions &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </body>
 
