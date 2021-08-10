@@ -30,6 +30,7 @@ router.post("/Profile", async (req, res) => {
   var un = req.body.Name;
   var pwd = req.body.Password;
   name=un;
+  // console.log(name)
   
   if (un == "admin" && pwd == "admin") {
     res.redirect("/demoprofile");
@@ -62,6 +63,7 @@ router.post("/Profile", async (req, res) => {
 
 //Internslist page routing
 router.get("/Listofinterns", async (req, res) => {
+  // console.log(name);
   internschema.find({}, function (err, intern) {
     if (err) console.log(err);
     if(role=="Intern"){
@@ -198,6 +200,8 @@ router.post("/changeskills",async(req,res)=>
 
 router.get("/redirect",async(req,res)=>
 {
+  //  res.send(name);
+  //  console.log(name);
    internschema.findOne({Name:name},function(err,intern)
     {
                     res.render('../view/profile', {
