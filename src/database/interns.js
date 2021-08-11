@@ -202,6 +202,7 @@ router.get("/redirect",async(req,res)=>
 {
   //  res.send(name);
   //  console.log(name);
+  if(!name) {name="Ram"}
    internschema.findOne({Name:name},function(err,intern)
     {
                     res.render('../view/profile', {

@@ -23,7 +23,8 @@
                     <br>
                     <li>
                         <div class="logo">
-                            <img src="/public/images/listerlogo.png" width="300" height="70" />
+                            <img src="/public/images/listerlogo.png" width="300" height="70"
+                                style="padding: 5px;margin-bottom: -27%;" />
                         </div>
                     </li>
                     &emsp; &emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
@@ -36,6 +37,9 @@
                         &emsp; &emsp;&emsp; &emsp;&emsp; &emsp;&emsp;&emsp; &emsp;
                         &emsp; &emsp;&emsp; &emsp;&emsp; &emsp;&emsp;&emsp; &emsp;
                         &emsp; &emsp; &emsp;&emsp; &emsp;&emsp; &emsp;&emsp;&emsp; &emsp;
+                        &emsp;&emsp;&emsp; &emsp;&emsp;&emsp;&emsp; &emsp;
+                        &emsp;&emsp;&emsp; &emsp;&emsp;&emsp;&emsp; &emsp;
+                        &emsp;&emsp;&emsp; &emsp;
                         <a href="/Listofinterns">List</a>
                     </li>
 
@@ -96,25 +100,37 @@
         </div>
     </div>
 
-    <div class="block" id="myForm" style="font-family: Verdana, Geneva, Tahoma, sans-serif;">
-        <div class="userimage">
-            <image src="/public/images/user.jpg" width="300" height="300"></image>
-            <p class="mail" id="mailid">&nbsp;</p>
+
+    <div class="modal" id="myForm" style="font-family: Verdana, Geneva, Tahoma, sans-serif;width: 100%;" tabindex="-1"
+        role="dialog">
+        <div class="modal-dialog" role="document" style="width: 800px;">
+            <div class="modal-content" style="width: 800px;">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel" style="font-weight: bold;font-size: medium;">Profile
+                    </h5>
+                </div>
+                <div>
+                    <image src="/public/images/user.jpg" width="300" height="300"></image>
+                    <p class="mail" id="mailid">&nbsp;</p>
+                </div>
+                <div class="details"
+                    style="margin-left:-70%;margin-top: -40%;font-family: Verdana, Geneva, Tahoma, sans-serif;">
+                    <strong>
+                        <h1>
+                            <p id="uname"></p>
+                        </h1>
+                    </strong></p>
+                    <p id="id"></p>
+                    <p id="about"></p>
+                    <p><b>skills : </b></p>
+                    <p id="skills"></p>
+                    <br><br><br>
+                    <button type="button" class="btn cancel" onclick="closeForm()"
+                        style="color: white;font-size: 15px;width: 300px;">Close</button>
+                </div>
+            </div>
         </div>
-        <div class="details" style="font-family: Verdana, Geneva, Tahoma, sans-serif;">
-            <strong>
-                <h1>
-                    <p id="uname"></p>
-                </h1>
-            </strong></p>
-            <p id="id"></p>
-            <p id="about"></p>
-            <p><b>skills : </b></p>
-            <p id="skills"></p>
-            <br>
-            <button type="button" class="btn cancel" onclick="closeForm()"
-                style="color: white;font-size: 15px;">Close</button>
-        </div>
+    </div>
     </div>
 
     <form action="/storecourse" method="POST">
