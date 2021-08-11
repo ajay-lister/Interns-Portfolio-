@@ -256,7 +256,7 @@ align-items: center;
 {
    float : right;
    width : 50%;
-   right: 0;
+    margin-left: 600px;
 }
 
 a:hover

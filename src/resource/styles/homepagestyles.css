@@ -182,6 +182,7 @@ text-decoration: none;
 {
    float : right;
    width : 50%;
+   margin-left: 600px;
 }
 
 a.active
