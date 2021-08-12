@@ -1,4 +1,5 @@
 //imports
+
 const express = require("express");
 const router = express.Router();
 const { loginschema } = require("./interntable");
@@ -8,9 +9,8 @@ const con = require("./dbconnection");
 const store = require('store');
 const bodyParser = require("body-parser");
 const alert = require("alert");
+ 
 const Cryptr = require("cryptr");
-// const { default: swal } = require("sweetalert");
-
 cryptr = new Cryptr("abc");
 
 const app = express();
@@ -20,6 +20,7 @@ con.on("open", () => {
 
 //middleware
 router.use(bodyParser.urlencoded({ extended: true }));
+
 
 var detail = [];
 let name;
@@ -31,7 +32,7 @@ router.post("/Profile", async (req, res) => {
   var pwd = req.body.Password;
   name=un;
   // console.log(name)
-  
+  var status = {valid : true,acceptstate : false};
   if (un == "admin" && pwd == "admin") {
     res.redirect("/demoprofile");
   } else {
@@ -39,12 +40,19 @@ router.post("/Profile", async (req, res) => {
       if (err) console.log(err);
       if(user==null)
       {
-        //  swal("Incorrect Username..Please try again!","error")
-        alert("Incorrect Username..Please try again!")
+         status.valid=true;
+        // alert("Incorrect Username..Please try again!")
+         res.render('../view/Homepage', {
+            details: status,
+          });
       }
       else if (cryptr.decrypt(user.Password) != pwd){
-        alert("Incorrect Password..Please try again!");
-        res.redirect("/Homepage")
+        // alert("Incorrect Password..Please try again!");
+        // res.redirect("/Homepage")
+        status.valid = false;
+        res.render('../view/Homepage', {
+            details: status,
+          });
       }
       else {
         role = user.Role;
@@ -52,7 +60,7 @@ router.post("/Profile", async (req, res) => {
           if (err) console.log(err);
           // detail = intern;
           res.render('../view/profile', {
-            details: intern
+            details: intern,
           });
         });
       }
@@ -64,6 +72,7 @@ router.post("/Profile", async (req, res) => {
 //Internslist page routing
 router.get("/Listofinterns", async (req, res) => {
   // console.log(name);
+  var status={}
   internschema.find({}, function (err, intern) {
     if (err) console.log(err);
     if(role=="Intern"){
@@ -75,6 +84,7 @@ router.get("/Listofinterns", async (req, res) => {
   {
      res.render('../view/Internslist.ejs', {
       interns: intern,
+       details : status
     });   
   }
   });
@@ -87,12 +97,14 @@ router.post("/fetchresult" ,async (req,res)=>
       // console.log(req.body.selement)
       //res.send("Hello")
       var skill = req.body.selement;
+      var state = {}
       internschema.find({Skills : skill},function(err,skilled)
          {
                //console.log(skilled)
                if(skilled.length==0)  alert("No intern found...Please nominate an intern for a course..!")
                res.render("../view/Internslist.ejs", {
                 interns: skilled,
+                details:state
                 }); 
               })
 
@@ -148,9 +160,27 @@ router.post("/storecourse", async(req,res)=>{
       internschema.findOneAndUpdate({Mail : mail},{$set :{Coursestatus:"Nominated"}},{upsert:true},function(err)
       {
              if(err) console.log(err)
-             alert("Posted message successfully..!");
-             res.redirect("/Listofinterns")
+            //  alert("Posted message successfully..!");
       })
+      var status = {valid : true};
+      
+      internschema.find({}, function (err, intern) {
+    if (err) console.log(err);
+    if(role=="Intern"){
+   res.render('../view/Intern.ejs', {
+      interns: intern,
+    });
+  }
+  else
+  {
+     res.render('../view/Internslist.ejs', {
+      interns: intern,
+      details:status
+    });   
+  }
+  });
+      //  res.redirect("/Listofinterns");
+
 })
 
 
@@ -163,11 +193,12 @@ router.post("/update", async(req,res)=>
      internschema.findOneAndUpdate({Name : name},{$set :{Coursestatus:status}},{upsert:true},function(err)
       {
              if(err) console.log(err)
+             
               alert("Accepted the course successfully..!")
               internschema.findOne({Name:name},function(err,intern)
               {
                     res.render('../view/profile', {
-                    details: intern
+                    details: intern,
                      });
               })
       })
@@ -202,11 +233,13 @@ router.get("/redirect",async(req,res)=>
 {
   //  res.send(name);
   //  console.log(name);
+  var stat={}
   if(!name) {name="Ram"}
    internschema.findOne({Name:name},function(err,intern)
     {
                     res.render('../view/profile', {
-                    details: intern
+                    details: intern,
+                    stat:stat
                      });
      })
 })

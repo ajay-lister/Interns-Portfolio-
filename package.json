@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon src/Controller/server.js"
+    "start": "node src/controller/server.js"
   },
   "author": "Ajay",
   "license": "ISC",
@@ -14,14 +14,18 @@
     "alerts": "^0.1.3",
     "bcrypt": "^5.0.1",
     "body-parser": "^1.19.0",
+    "bootstrap-alertbox": "^1.0.3",
     "cryptr": "^6.0.2",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
+    "js-alert": "^1.0.4",
     "mongodb": "^4.0.0",
     "mongoose": "^5.13.5",
     "node-localstorage": "^2.2.1",
+    "node-popup": "^0.1.14",
     "popups": "^1.1.3",
     "store": "^2.0.12",
-    "sweetalert": "^2.1.2"
+    "sweetalert": "^2.1.2",
+    "sweetalert2": "^11.1.2"
   }
 }
