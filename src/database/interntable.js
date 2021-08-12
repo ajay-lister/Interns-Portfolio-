@@ -33,6 +33,10 @@ const schema1 = new mongoose.Schema(
        Coursestatus:
        {
             type: String,
+       },
+       Courseduration:
+       {
+           type: String,
        }
 
     }

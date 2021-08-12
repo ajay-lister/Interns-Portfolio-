@@ -132,7 +132,8 @@ router.post("/", async (req, res) => {
     Description: req.body.Description,
     Mail: req.body.Mail,
     Course: "NA",
-    Coursestatus : "NA"
+    Coursestatus : "NA",
+    Courseduration: "NA",
   });
 
   try {
@@ -157,7 +158,7 @@ router.post("/storecourse", async(req,res)=>{
              if(err) console.log(err)
               f=true;
       })
-      internschema.findOneAndUpdate({Mail : mail},{$set :{Coursestatus:"Nominated"}},{upsert:true},function(err)
+      internschema.findOneAndUpdate({Mail : mail},{$set :{Coursestatus:"Nominated",Courseduration:duration}},{upsert:true},function(err)
       {
              if(err) console.log(err)
             //  alert("Posted message successfully..!");

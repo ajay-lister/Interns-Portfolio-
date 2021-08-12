@@ -239,7 +239,13 @@
                             </strong></div>
                         <div>
                             <br>
-                            &nbsp;&nbsp;&nbsp;You have been assigned to complete a course : <%= details["Course"]%>.
+                            &nbsp;&nbsp;&nbsp;You have been assigned to complete a course :<strong>
+                                <%= details["Course"]%>
+                            </strong>
+                            within a maximum duration of <strong>
+                                <%= details["Courseduration"]%> months.
+                            </strong>
+
                         </div>
                         <br><br>
                         <% if(details["Coursestatus"]=="Accepted" || details["Coursestatus"]=="Completed" ){ %>
