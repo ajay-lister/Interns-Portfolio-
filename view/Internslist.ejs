@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
     <script src="/public/source/source.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link type="text/css" rel="stylesheet" href="/public/styles/internsliststyles.css" />
@@ -249,11 +251,21 @@
             searchbox.classList.toggle("act");
         }
     </script>
-    <!-- <script>
-        $('#mailform').on('show.bs.modal', () => {
-            msgform(<%= interns[i] %>);
-        });
-    </script> -->
+
+    <script type="text/javascript">
+        var error = <%= details["valid"] %>;
+        if (error) {
+            setTimeout(function () {
+                swal({
+                    title: "Nominated!",
+                    text: "",
+                    type: "success"
+                }, function () {
+                    history.back();
+                });
+            }, 300);
+        }
+    </script>
 </body>
 
 </html>

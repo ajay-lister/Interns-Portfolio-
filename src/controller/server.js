@@ -17,7 +17,10 @@ app.use("/redirect",router);
 app.use("/public", express.static(path.join(__dirname + "/../resource")));
 
 app.get("/Homepage", function (req, res) {
-  res.sendFile(path.join(__dirname + "/../../view/Homepage.html"));
+  // res.sendFile(path.join(__dirname + "/../../view/Homepage.html"));
+  res.render(path.join(__dirname + "/../../view/Homepage"),{
+         details:{}
+  });
 });
 
 app.get("/demoprofile", function (req, res) {
@@ -25,7 +28,10 @@ app.get("/demoprofile", function (req, res) {
 });
 
 app.get("/logout", function (req, res) {
-  res.sendFile(path.join(__dirname + "/../../view/Homepage.html"));
+  // res.sendFile(path.join(__dirname + "/../../view/Homepage.html"));
+   res.render(path.join(__dirname + "/../../view/Homepage"),{
+         details:{}
+  });
 });
 
 app.get("/signup", function (req, res) {
